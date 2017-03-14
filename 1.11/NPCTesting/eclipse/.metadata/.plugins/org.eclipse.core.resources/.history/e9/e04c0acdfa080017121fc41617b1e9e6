@@ -43,9 +43,9 @@ public class TaskAIGoTo extends EntityAIBase{
 	
 	public boolean continueExecuting(){
 		Utils.getLogger().info("TaskAIGoTo: continueExecute");
-		boolean output =!this.test.getNavigator().noPath();
+		boolean output =!this.test.getNavigator().noPath()&&test.getDistance(29, 62, 265)>2;
 		Utils.getLogger().info("TaskAIGoTo: continueExecute: "+output+" distance: "+test.getDistance(29, 62, 265));
-		return !this.test.getNavigator().noPath();		
+		return !this.test.getNavigator().noPath()&&test.getDistance(-30, 60, 246)>2;		
     }
 	
 	 //public void updateTask(){
