@@ -1,0 +1,129 @@
+[20:39:38] [Client thread/INFO]: Setting user: Player331
+[20:39:44] [Client thread/WARN]: Skipping bad option: lastServer:
+[20:39:44] [Client thread/INFO]: LWJGL Version: 2.9.4
+[20:39:45] [Client thread/INFO]: [STDOUT]: ---- Minecraft Crash Report ----
+// I blame Dinnerbone.
+
+Time: 3/13/17 8:39 PM
+Description: Loading screen debug info
+
+This is just a prompt for computer specs to be printed. THIS IS NOT A ERROR
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- System Details --
+Details:
+	Minecraft Version: 1.11.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_121, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 859668552 bytes (819 MB) / 1038876672 bytes (990 MB) up to 1038876672 bytes (990 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: 
+	Loaded coremods (and transformers): 
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.5.0 NVIDIA 369.09' Renderer: 'GeForce 920MX/PCIe/SSE2'
+[20:39:48] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Test Mod
+[20:39:52] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[20:39:53] [Thread-8/INFO]: Initializing LWJGL OpenAL
+[20:39:53] [Thread-8/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[20:39:53] [Thread-8/INFO]: OpenAL initialized.
+[20:39:53] [Sound Library Loader/INFO]: Sound engine started
+[20:39:59] [Client thread/INFO]: Created: 16x16 textures-atlas
+[20:40:00] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Test Mod
+[20:40:04] [Client thread/INFO]: SoundSystem shutting down...
+[20:40:04] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[20:40:04] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[20:40:04] [Thread-10/INFO]: Initializing LWJGL OpenAL
+[20:40:04] [Thread-10/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[20:40:04] [Thread-10/INFO]: OpenAL initialized.
+[20:40:05] [Sound Library Loader/INFO]: Sound engine started
+[20:40:10] [Client thread/INFO]: Created: 512x512 textures-atlas
+[20:40:11] [Client thread/WARN]: Skipping bad option: lastServer:
+[20:40:12] [Realms Notification Availability checker #1/INFO]: Could not authorize you against Realms server: Invalid session id
+[20:40:16] [Server thread/INFO]: Starting integrated minecraft server version 1.11.2
+[20:40:16] [Server thread/INFO]: Generating keypair
+[20:40:17] [Server thread/INFO]: Preparing start region for level 0
+[20:40:18] [Server thread/INFO]: Changing view distance to 12, from 10
+[20:40:20] [Server thread/INFO]: Player331[local:E:33d67019] logged in with entity id 348 at (-26.47712347629, 61.0, 247.75564899196712)
+[20:40:20] [Server thread/INFO]: Player331 joined the game
+[20:40:21] [Server thread/INFO]: Saving and pausing game...
+[20:40:21] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[20:40:21] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[20:40:21] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[20:40:21] [pool-2-thread-1/WARN]: Couldn't look up profile properties for com.mojang.authlib.GameProfile@65e21cd0[id=b52d0c01-e908-3f05-9150-dcf0319ded3d,name=Player331,properties={},legacy=false]
+com.mojang.authlib.exceptions.AuthenticationException: The client has sent too many requests within a certain amount of time
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:79) ~[YggdrasilAuthenticationService.class:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fillGameProfile(YggdrasilMinecraftSessionService.java:180) [YggdrasilMinecraftSessionService.class:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService$1.load(YggdrasilMinecraftSessionService.java:60) [YggdrasilMinecraftSessionService$1.class:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService$1.load(YggdrasilMinecraftSessionService.java:57) [YggdrasilMinecraftSessionService$1.class:?]
+	at com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3524) [guava-17.0.jar:?]
+	at com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2317) [guava-17.0.jar:?]
+	at com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2280) [guava-17.0.jar:?]
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2195) [guava-17.0.jar:?]
+	at com.google.common.cache.LocalCache.get(LocalCache.java:3934) [guava-17.0.jar:?]
+	at com.google.common.cache.LocalCache.getOrLoad(LocalCache.java:3938) [guava-17.0.jar:?]
+	at com.google.common.cache.LocalCache$LocalLoadingCache.get(LocalCache.java:4821) [guava-17.0.jar:?]
+	at com.google.common.cache.LocalCache$LocalLoadingCache.getUnchecked(LocalCache.java:4827) [guava-17.0.jar:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fillProfileProperties(YggdrasilMinecraftSessionService.java:170) [YggdrasilMinecraftSessionService.class:?]
+	at net.minecraft.client.Minecraft.getProfileProperties(Minecraft.java:3056) [Minecraft.class:?]
+	at net.minecraft.client.resources.SkinManager$3.run(SkinManager.java:138) [SkinManager$3.class:?]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) [?:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [?:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [?:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [?:1.8.0_121]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_121]
+[20:40:25] [Server thread/INFO]: [STDOUT]: Player has interacted with the mob
+[20:40:25] [Server thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.ClassCastException: com.clowcadia.test.entities.Test cannot be cast to com.clowcadia.test.npc.Basic
+	at java.util.concurrent.FutureTask.report(Unknown Source) ~[?:1.8.0_121]
+	at java.util.concurrent.FutureTask.get(Unknown Source) ~[?:1.8.0_121]
+	at net.minecraft.util.Util.runTask(Util.java:27) [Util.class:?]
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:753) [MinecraftServer.class:?]
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:698) [MinecraftServer.class:?]
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:156) [IntegratedServer.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:547) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_121]
+Caused by: java.lang.ClassCastException: com.clowcadia.test.entities.Test cannot be cast to com.clowcadia.test.npc.Basic
+	at com.clowcadia.test.containers.ContainerBasic.detectAndSendChanges(ContainerBasic.java:59) ~[ContainerBasic.class:?]
+	at net.minecraft.inventory.Container.addListener(Container.java:54) ~[Container.class:?]
+	at net.minecraftforge.fml.common.network.internal.FMLNetworkHandler.openGui(FMLNetworkHandler.java:102) ~[FMLNetworkHandler.class:?]
+	at net.minecraft.entity.player.EntityPlayer.openGui(EntityPlayer.java:2733) ~[EntityPlayer.class:?]
+	at com.clowcadia.test.entities.Test.processInteract(Test.java:67) ~[Test.class:?]
+	at net.minecraft.entity.EntityLiving.processInitialInteract(EntityLiving.java:1337) ~[EntityLiving.class:?]
+	at net.minecraft.entity.player.EntityPlayer.interactOn(EntityPlayer.java:1273) ~[EntityPlayer.class:?]
+	at net.minecraft.network.NetHandlerPlayServer.processUseEntity(NetHandlerPlayServer.java:1067) ~[NetHandlerPlayServer.class:?]
+	at net.minecraft.network.play.client.CPacketUseEntity.processPacket(CPacketUseEntity.java:94) ~[CPacketUseEntity.class:?]
+	at net.minecraft.network.play.client.CPacketUseEntity.processPacket(CPacketUseEntity.java:15) ~[CPacketUseEntity.class:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:15) ~[PacketThreadUtil$1.class:?]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) ~[?:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(Unknown Source) ~[?:1.8.0_121]
+	at net.minecraft.util.Util.runTask(Util.java:26) ~[Util.class:?]
+	... 5 more
+[20:40:26] [Server thread/ERROR]: Encountered an unexpected exception
+net.minecraft.util.ReportedException: Ticking player
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:800) ~[MinecraftServer.class:?]
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:698) ~[MinecraftServer.class:?]
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:156) ~[IntegratedServer.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:547) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_121]
+Caused by: java.lang.ClassCastException: com.clowcadia.test.entities.Test cannot be cast to com.clowcadia.test.npc.Basic
+	at com.clowcadia.test.containers.ContainerBasic.detectAndSendChanges(ContainerBasic.java:59) ~[ContainerBasic.class:?]
+	at net.minecraft.entity.player.EntityPlayerMP.onUpdate(EntityPlayerMP.java:318) ~[EntityPlayerMP.class:?]
+	at net.minecraft.world.World.updateEntityWithOptionalForce(World.java:2108) ~[World.class:?]
+	at net.minecraft.world.WorldServer.updateEntityWithOptionalForce(WorldServer.java:875) ~[WorldServer.class:?]
+	at net.minecraft.world.World.updateEntity(World.java:2075) ~[World.class:?]
+	at net.minecraft.world.WorldServer.tickPlayers(WorldServer.java:676) ~[WorldServer.class:?]
+	at net.minecraft.world.World.updateEntities(World.java:1864) ~[World.class:?]
+	at net.minecraft.world.WorldServer.updateEntities(WorldServer.java:647) ~[WorldServer.class:?]
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:794) ~[MinecraftServer.class:?]
+	... 4 more
+[20:40:26] [Server thread/ERROR]: This crash report has been saved to: C:\Users\Andre\OneDrive\Documents\Development\MinecraftForge\1.11\NPCTesting\run\.\crash-reports\crash-2017-03-13_20.40.26-server.txt
+[20:40:26] [Server thread/INFO]: Stopping server
+[20:40:26] [Server thread/INFO]: Saving players
+[20:40:26] [Server thread/INFO]: Saving worlds
+[20:40:26] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[20:40:26] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[20:40:26] [Server thread/INFO]: Saving chunks for level 'New World'/The End
