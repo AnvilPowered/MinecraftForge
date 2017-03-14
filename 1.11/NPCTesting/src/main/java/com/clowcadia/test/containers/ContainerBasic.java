@@ -46,6 +46,7 @@ public class ContainerBasic extends Container{
 	public boolean canInteractWith(EntityPlayer player) {
 		Utils.getLogger().info("ContainerBasic: canInteractWith");
 		
+		((Test) this.entity).getOwner(player);
 		return !player.isSpectator();
 	}
 	

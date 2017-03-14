@@ -6,6 +6,7 @@ import com.clowcadia.test.utils.Utils;
 
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIFollowOwner;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityTameable;
@@ -35,8 +36,8 @@ public class Test extends EntityTameable{
 		this.handler = new ItemStackHandler(9); 
 		this.stomach = 0;
 		this.tasks.addTask(0, new EntityAITempt(this, 0.5d, Items.APPLE, false));
-	}
-	
+		this.tasks.addTask(0, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
+	}	
 	
 	public int getStomach(){
 		Utils.getLogger().info("Test: getStomach");
@@ -48,6 +49,17 @@ public class Test extends EntityTameable{
 		Utils.getLogger().info("Test: setStomach");
 		
 		this.stomach = value;
+	}
+	
+	public void getOwner(EntityPlayer player){
+		Utils.getLogger().info("Test: getOwner");
+		
+		Utils.getLogger().info("Player: "+player.getUniqueID());
+		if(stomach == stomachCap){
+			this.setTamed(true);
+			this.setOwnerId(player.getUniqueID());			
+		}
+		Utils.getLogger().info("Owner: "+this.getOwnerId());
 	}
 	
 	@Override
