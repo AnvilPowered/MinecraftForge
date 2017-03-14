@@ -52,7 +52,7 @@ public class Test extends EntityTameable{
 	
 	@Override
 	public boolean isAIDisabled() {
-		//Utils.getLogger().info("test: isAIDisabled");
+		Utils.getLogger().info("test: isAIDisabled");
 		
 		return false;
 	}
@@ -85,6 +85,7 @@ public class Test extends EntityTameable{
 		ItemStack foodStack = handler.getStackInSlot(0);
 		if (this.world != null){
 			if(!this.world.isRemote){
+				Utils.getLogger().info("Stomach: "+stomach);
 				if(foodStack.getUnlocalizedName().equals(Items.APPLE.getUnlocalizedName()) && stomach != stomachCap){					
 					foodStack.splitStack(1);
 					stomach += 40;

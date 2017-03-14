@@ -25,7 +25,7 @@ public class RenderEntityTest extends RenderLiving{
 	
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		//Utils.getLogger().info("RenderEntityTest: getEntityTexture");
+		Utils.getLogger().info("RenderEntityTest: getEntityTexture");
 		
 		return EntityTestTextures;
 	}
