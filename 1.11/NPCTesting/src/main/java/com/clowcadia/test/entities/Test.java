@@ -2,6 +2,7 @@ package com.clowcadia.test.entities;
 
 import com.clowcadia.test.GuiHandler;
 import com.clowcadia.test.TestModHandler;
+import com.clowcadia.test.ai.TaskAIGoTo;
 import com.clowcadia.test.utils.Utils;
 
 import net.minecraft.entity.EntityAgeable;
@@ -14,6 +15,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
@@ -27,7 +29,8 @@ public class Test extends EntityTameable{
 	private String tagStomach = "Stomach";
 	private int stomach;	
 	private int stomachCap = 800;
-
+	//private PathNavigate path;
+	
 	public Test(World worldIn) {
 		super(worldIn);
 		Utils.getLogger().info("Test: Constructor");
@@ -39,8 +42,9 @@ public class Test extends EntityTameable{
 	}	
 	
 	protected void initEntityAI(){
-		this.tasks.addTask(0, new EntityAITempt(this, 0.5d, Items.APPLE, false));
-		this.tasks.addTask(0, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
+		//this.tasks.addTask(0, new EntityAITempt(this, 0.5d, Items.APPLE, false));
+		//this.tasks.addTask(1, new EntityAIFollowOwner(this, 1.0D, 10.0F, 0.5F));
+		this.tasks.addTask(0, new TaskAIGoTo(this, 10.0F));
 	}
 	
 	public int getStomach(){
@@ -63,6 +67,7 @@ public class Test extends EntityTameable{
 			this.setTamed(true);
 			this.navigator.clearPathEntity();
 			this.setOwnerId(player.getUniqueID());	
+			//this.path.tryMoveToXYZ(29, 62, 265, 10.0F);
 		}
 		Utils.getLogger().info("Owner: "+this.getOwner()+" is tamed "+this.isTamed());
 	}
