@@ -1,7 +1,6 @@
 package com.clowcadia.test;
 
 import com.clowcadia.test.entities.Test;
-import com.clowcadia.test.render.RenderEntityTest;
 import com.clowcadia.test.render.RenderTestFactory;
 import com.clowcadia.test.utils.Utils;
 

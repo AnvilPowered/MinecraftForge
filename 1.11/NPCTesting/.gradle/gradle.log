@@ -1,18 +1,9 @@
 This mapping 'snapshot_20161220' was designed for MC 1.11! Use at your own peril.This mapping 'snapshot_20161220' was designed for MC 1.11! Use at your own peril.
 
-#################################################
-         ForgeGradle 2.2-SNAPSHOT-2112b0a        
-  https://github.com/MinecraftForge/ForgeGradle  
-#################################################
-               Powered by MCP unknown               
-             http://modcoderpack.com             
-         by: Searge, ProfMobius, Fesh0r,         
-         R4wk, ZeuX, IngisKahn, bspkrs           
-#################################################
 :deobfCompileDummyTask
 :deobfProvidedDummyTask
 :getVersionJson
-:extractUserdev
+:extractUserdev UP-TO-DATE
 :extractDependencyATs SKIPPED
 :extractMcpData SKIPPED
 :extractMcpMappings SKIPPED
@@ -30,16 +21,10 @@ This mapping 'snapshot_20161220' was designed for MC 1.11! Use at your own peril
 :extractNatives SKIPPED
 :getAssetIndex UP-TO-DATE
 :getAssets
-Current status: 642/1196   53%
+Current status: 728/1196   60%
 :makeStart
 :setupDecompWorkspace
-:eclipseClasspath
-:eclipseJdt
-:eclipseProject
-:makeEclipseCleanRunClient
-:makeEclipseCleanRunServer
-:eclipse
 
 BUILD SUCCESSFUL
 
-Total time: 25.789 secs
+Total time: 13.094 secs
