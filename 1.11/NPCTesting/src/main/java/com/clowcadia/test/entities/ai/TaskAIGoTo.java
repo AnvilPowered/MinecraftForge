@@ -22,7 +22,7 @@ public class TaskAIGoTo extends EntityAIBase{
 		
         if (!(test.getDistance(-30, 59, 261)<2)) return true;
         else return false;
-	}///dddd
+	}
 
     public void startExecuting(){
         Utils.getLogger().info("TaskAIGoTo: startExecuting");
