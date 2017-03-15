@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.clowcadia.test.entities.Test"/>
 <fullyQualifiedTypeName name="com.clowcadia.test.utils.Utils"/>
+<fullyQualifiedTypeName name="akka.actor.ExtendedActorSystem"/>
+<fullyQualifiedTypeName name="net.minecraft.entity.Entity"/>
+<fullyQualifiedTypeName name="net.minecraft.pathfinding.PathNavigate"/>
+<fullyQualifiedTypeName name="net.minecraft.entity.ai.EntityAIBase"/>
+<fullyQualifiedTypeName name="net.minecraft.entity.passive.EntityTameable"/>
+<fullyQualifiedTypeName name="com.clowcadia.test.entities.Test"/>
+<fullyQualifiedTypeName name="io.netty.handler.codec.serialization.ObjectEncoderOutputStream"/>
+<fullyQualifiedTypeName name="com.clowcadia.test.entities.ai.TaskAIGoTo"/>
+<fullyQualifiedTypeName name="net.minecraft.entity.ai.EntityAIWander"/>
 </qualifiedTypeNameHistroy>

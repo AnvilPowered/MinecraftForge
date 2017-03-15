@@ -2,7 +2,7 @@ package com.clowcadia.test.entities;
 
 import com.clowcadia.test.GuiHandler;
 import com.clowcadia.test.TestModHandler;
-import com.clowcadia.test.ai.TaskAIGoTo;
+import com.clowcadia.test.entities.ai.TaskAIGoTo;
 import com.clowcadia.test.utils.Utils;
 
 import net.minecraft.entity.EntityAgeable;

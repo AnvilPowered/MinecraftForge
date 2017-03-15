@@ -2,17 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="getOwner" key="selection"/>
+		<item value="EntityAIFollowOwner" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="lead"/>
+			<item value="leashed"/>
+			<item value="entityAi"/>
+			<item value="setEntityState"/>
 			<item value="getOwner"/>
 			<item value="setOwner"/>
 			<item value="writing stomach"/>
 			<item value="writing to"/>
-			<item value="writingto"/>
 		</list>
 		<list key="replacehistory">
 		</list>

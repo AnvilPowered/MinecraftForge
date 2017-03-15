@@ -1,4 +1,4 @@
-package com.clowcadia.test.ai;
+package com.clowcadia.test.entities.ai;
 
 public class TaskAIGoTo {
 

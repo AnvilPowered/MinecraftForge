@@ -20,11 +20,8 @@ import net.minecraftforge.items.ItemStackHandler;
 public class Test extends EntityTameable{
 	
 	private final ItemStackHandler handler;
-	private String tagStomach = "Stomach";
 	private int stomach;	
 	private int stomachCap = 800;
-	//private PathNavigate path;
-	//
 	public Test(World worldIn) {
 		super(worldIn);
 		Utils.getLogger().info("Test: Constructor");
