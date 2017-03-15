@@ -11,6 +11,7 @@ public class ClientProxy extends CommonProxy{
 	
 	public void preInit(){
 		Utils.getLogger().info("ClientProxy: preInit");
+		super.preInit();
 		
 		ModelHandler.registerAllModels();
 	}
@@ -18,6 +19,7 @@ public class ClientProxy extends CommonProxy{
 	@Override
 	public void init(){
 		Utils.getLogger().info("ClientProxy: init");
+		super.init();
 		
 		EntitiesHandler.registerEntity();
 		NetworkRegistry.INSTANCE.registerGuiHandler(ModHandler.instance, new GuiHandler());

@@ -9,6 +9,8 @@ public class CommonProxy {
     
     public void preInit() {
         Utils.getLogger().info("CommonProxy: preInit");
+        
+        
     }
 	
 	public void init() {
