@@ -1,11 +1,11 @@
-[22:01:24] [main/INFO]: Logging in with username & password
-[22:01:30] [Client thread/INFO]: Setting user: Lynthos
-[22:01:35] [Client thread/WARN]: Skipping bad option: lastServer:
-[22:01:35] [Client thread/INFO]: LWJGL Version: 2.9.4
-[22:01:36] [Client thread/INFO]: [STDOUT]: ---- Minecraft Crash Report ----
-// I just don't know what went wrong :(
+[22:20:06] [main/INFO]: Logging in with username & password
+[22:20:12] [Client thread/INFO]: Setting user: Lynthos
+[22:20:18] [Client thread/WARN]: Skipping bad option: lastServer:
+[22:20:18] [Client thread/INFO]: LWJGL Version: 2.9.4
+[22:20:20] [Client thread/INFO]: [STDOUT]: ---- Minecraft Crash Report ----
+// Oh - I know what I did wrong!
 
-Time: 3/14/17 10:01 PM
+Time: 3/14/17 10:20 PM
 Description: Loading screen debug info
 
 This is just a prompt for computer specs to be printed. THIS IS NOT A ERROR
@@ -20,49 +20,49 @@ Details:
 	Operating System: Windows 10 (amd64) version 10.0
 	Java Version: 1.8.0_121, Oracle Corporation
 	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
-	Memory: 314523024 bytes (299 MB) / 506462208 bytes (483 MB) up to 1879048192 bytes (1792 MB)
+	Memory: 341100232 bytes (325 MB) / 509083648 bytes (485 MB) up to 1879048192 bytes (1792 MB)
 	JVM Flags: 0 total; 
 	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
 	FML: 
 	Loaded coremods (and transformers): 
 	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.5.0 NVIDIA 369.09' Renderer: 'GeForce 920MX/PCIe/SSE2'
-[22:01:41] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Test Mod
-[22:01:46] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[22:01:46] [Thread-8/INFO]: Initializing LWJGL OpenAL
-[22:01:46] [Thread-8/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[22:01:47] [Thread-8/INFO]: OpenAL initialized.
-[22:01:47] [Sound Library Loader/INFO]: Sound engine started
-[22:01:54] [Client thread/INFO]: Created: 16x16 textures-atlas
-[22:01:55] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Test Mod
-[22:01:59] [Client thread/INFO]: SoundSystem shutting down...
-[22:01:59] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
-[22:01:59] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[22:01:59] [Thread-10/INFO]: Initializing LWJGL OpenAL
-[22:01:59] [Thread-10/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[22:02:00] [Thread-10/INFO]: OpenAL initialized.
-[22:02:00] [Sound Library Loader/INFO]: Sound engine started
-[22:02:06] [Client thread/INFO]: Created: 512x512 textures-atlas
-[22:02:07] [Client thread/WARN]: Skipping bad option: lastServer:
-[22:02:16] [Server thread/INFO]: Starting integrated minecraft server version 1.11.2
-[22:02:16] [Server thread/INFO]: Generating keypair
-[22:02:17] [Server thread/INFO]: Preparing start region for level 0
-[22:02:18] [Server thread/INFO]: Changing view distance to 12, from 10
-[22:02:19] [Server thread/INFO]: Lynthos[local:E:3d675a9c] logged in with entity id 352 at (-25.624391612978954, 63.0, 241.76625948663474)
-[22:02:19] [Server thread/INFO]: Lynthos joined the game
-[22:02:21] [Server thread/INFO]: Saving and pausing game...
-[22:02:21] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
-[22:02:21] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
-[22:02:21] [Server thread/INFO]: Saving chunks for level 'New World'/The End
-[22:02:34] [Server thread/INFO]: Saving and pausing game...
-[22:02:34] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
-[22:02:34] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
-[22:02:34] [Server thread/INFO]: Saving chunks for level 'New World'/The End
-[22:02:36] [Client thread/INFO]: Stopping!
-[22:02:36] [Server thread/INFO]: Stopping server
-[22:02:36] [Server thread/INFO]: Saving players
-[22:02:36] [Server thread/INFO]: Saving worlds
-[22:02:36] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
-[22:02:36] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
-[22:02:36] [Server thread/INFO]: Saving chunks for level 'New World'/The End
-[22:02:36] [Client thread/INFO]: SoundSystem shutting down...
-[22:02:36] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[22:20:25] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Test Mod
+[22:20:30] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[22:20:31] [Thread-8/INFO]: Initializing LWJGL OpenAL
+[22:20:31] [Thread-8/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[22:20:31] [Thread-8/INFO]: OpenAL initialized.
+[22:20:31] [Sound Library Loader/INFO]: Sound engine started
+[22:20:39] [Client thread/INFO]: Created: 16x16 textures-atlas
+[22:20:40] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Test Mod
+[22:20:45] [Client thread/INFO]: SoundSystem shutting down...
+[22:20:46] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[22:20:46] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[22:20:46] [Thread-10/INFO]: Initializing LWJGL OpenAL
+[22:20:46] [Thread-10/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[22:20:46] [Thread-10/INFO]: OpenAL initialized.
+[22:20:46] [Sound Library Loader/INFO]: Sound engine started
+[22:20:52] [Client thread/INFO]: Created: 512x512 textures-atlas
+[22:20:54] [Client thread/WARN]: Skipping bad option: lastServer:
+[22:20:58] [Server thread/INFO]: Starting integrated minecraft server version 1.11.2
+[22:20:58] [Server thread/INFO]: Generating keypair
+[22:20:59] [Server thread/INFO]: Preparing start region for level 0
+[22:21:00] [Server thread/INFO]: Changing view distance to 12, from 10
+[22:21:01] [Server thread/INFO]: Lynthos[local:E:0b463c3e] logged in with entity id 348 at (-31.99451011203272, 61.0, 263.12853165354034)
+[22:21:01] [Server thread/INFO]: Lynthos joined the game
+[22:21:03] [Server thread/INFO]: Saving and pausing game...
+[22:21:03] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[22:21:03] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[22:21:03] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[22:21:17] [Server thread/INFO]: Saving and pausing game...
+[22:21:17] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[22:21:17] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[22:21:17] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[22:23:15] [Client thread/INFO]: Stopping!
+[22:23:15] [Server thread/INFO]: Stopping server
+[22:23:15] [Server thread/INFO]: Saving players
+[22:23:15] [Server thread/INFO]: Saving worlds
+[22:23:15] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[22:23:15] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[22:23:15] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[22:23:15] [Client thread/INFO]: SoundSystem shutting down...
+[22:23:15] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
