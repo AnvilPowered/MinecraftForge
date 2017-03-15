@@ -1,6 +1,5 @@
 package com.clowcadia.test;
 
-import com.clowcadia.test.entities.TestEntities;
 import com.clowcadia.test.utils.Utils;
 
 import net.minecraftforge.fml.common.Mod;
@@ -26,14 +25,12 @@ public class TestModHandler {
 	public void preInit(FMLPreInitializationEvent event){
 		Utils.getLogger().info("TestModHandler: preInit");
 		
-		TestModelManager.registerAllModels();//Only belongs here, not server or client side
+		proxy.preInit();
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event){
 		Utils.getLogger().info("TestModHandler: init");
-		
-		TestEntities.registerEntity();
 		
 		proxy.init();
 	}
