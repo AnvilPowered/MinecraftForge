@@ -22,6 +22,7 @@ public class Test extends EntityTameable{
 	private final ItemStackHandler handler;
 	private int stomach;	
 	private int stomachCap = 800;
+	
 	public Test(World worldIn) {
 		super(worldIn);
 		Utils.getLogger().info("Test: Constructor");

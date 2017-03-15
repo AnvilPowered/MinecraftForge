@@ -4,7 +4,7 @@ import com.clowcadia.test.entities.Test;
 import com.clowcadia.test.utils.Utils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
-//lets see
+
 public class TaskAIGoTo extends EntityAIBase{
 	
 	private final Test test;
@@ -20,7 +20,7 @@ public class TaskAIGoTo extends EntityAIBase{
 	@Override
 	public boolean shouldExecute() {
 		Utils.getLogger().info("TaskAIGoTo: shouldExecute");
-		EntityLivingBase entitylivingbase = this.test.getOwner();
+/*		EntityLivingBase entitylivingbase = this.test.getOwner();
 		if (entitylivingbase == null)
         {
 			Utils.getLogger().info("TaskAIGoTo: shouldExecute : false");
@@ -28,18 +28,26 @@ public class TaskAIGoTo extends EntityAIBase{
         }else {
         	Utils.getLogger().info("TaskAIGoTo: shouldExecute: true");
         	return true;
-        }
+        }*/
+        return true;
 	}
 	
 	public boolean continueExecuting(){
 		Utils.getLogger().info("TaskAIGoTo: continueExecute");
-		boolean output =!this.test.getNavigator().noPath();
+/*		boolean output =!this.test.getNavigator().noPath();
 		Utils.getLogger().info("TaskAIGoTo: continueExecute: "+output+" distance: "+test.getDistance(29, 62, 265));
-		return !this.test.getNavigator().noPath();		
+		return !this.test.getNavigator().noPath();*/
+        return !(test.getDistance(-21, 61, 239)<2);
     }
 
     public void startExecuting(){
-		this.test.getNavigator().tryMoveToXYZ(29, 62, 265, goToSpeed);
+		//this.test.getNavigator().tryMoveToXYZ(-21, 61, 265, goToSpeed);
 	}
-
+    
+    @Override
+    public void updateTask() {
+        if (test.getDistance(-21, 61, 239)<2){
+            test.getNavigator().tryMoveToXYZ(-21, 61, 239, goToSpeed);
+        }
+    }
 }
