@@ -1,4 +1,4 @@
-package com.clowcadia.test;
+package com.clowcadia.test.init;
 
 
 import java.security.PublicKey;

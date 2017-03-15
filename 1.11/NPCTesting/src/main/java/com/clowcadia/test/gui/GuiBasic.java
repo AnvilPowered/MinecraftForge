@@ -1,27 +1,16 @@
 package com.clowcadia.test.gui;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.clowcadia.test.TestModHandler;
+import com.clowcadia.test.ModHandler;
 import com.clowcadia.test.containers.ContainerBasic;
-import com.clowcadia.test.entities.Test;
+import com.clowcadia.test.entities.living.Test;
 import com.clowcadia.test.utils.Utils;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.items.CapabilityItemHandler;
-import scala.reflect.internal.Trees.This;
 
 public class GuiBasic extends GuiContainer{
 	
@@ -43,7 +32,7 @@ public class GuiBasic extends GuiContainer{
 		//Utils.getLogger().info("GuiBasic: drawGuiContainerBackgroundLayer");
 		
 		GlStateManager.color(1.0F, 1.0F, 1.0F,1.0F);
-		this.mc.getTextureManager().bindTexture(new ResourceLocation(TestModHandler.modId, "textures/gui/container/basic.png"));
+		this.mc.getTextureManager().bindTexture(new ResourceLocation(ModHandler.modId, "textures/gui/container/basic.png"));
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize,this.ySize);
 		
 	}

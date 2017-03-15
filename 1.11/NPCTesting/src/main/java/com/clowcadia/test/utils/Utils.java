@@ -1,9 +1,8 @@
 package com.clowcadia.test.utils;
 
+import com.clowcadia.test.ModHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import com.clowcadia.test.TestModHandler;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
@@ -28,7 +27,7 @@ public class Utils {
 	 */
 	public static Logger getLogger() {
 		if(logger == null) {
-			logger = LogManager.getFormatterLogger(TestModHandler.modId);
+			logger = LogManager.getFormatterLogger(ModHandler.modId);
 		}
 		return logger;
 	}
@@ -39,7 +38,7 @@ public class Utils {
 	 */
 	public static Lang getLang() {
 		if(lang == null) {
-			lang = new Lang(TestModHandler.modId); //Change Reference.MODID to whatever you feel necessary notice that when in the language file it will be what ever you put in . what you asked it for
+			lang = new Lang(ModHandler.modId); //Change Reference.MODID to whatever you feel necessary notice that when in the language file it will be what ever you put in . what you asked it for
 		}
 		return lang;
 	}

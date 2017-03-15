@@ -1,6 +1,6 @@
 package com.clowcadia.test.containers;
 
-import com.clowcadia.test.entities.Test;
+import com.clowcadia.test.entities.living.Test;
 import com.clowcadia.test.utils.Utils;
 
 import net.minecraft.entity.Entity;
@@ -9,8 +9,6 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
-import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
