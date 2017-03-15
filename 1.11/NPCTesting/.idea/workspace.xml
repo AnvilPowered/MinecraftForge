@@ -1,34 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9b4417f9-8c90-432c-a13a-c11e9fc948f4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/NPCTesting_main/com/clowcadia/test/entities/Test.class" afterPath="$PROJECT_DIR$/out/production/NPCTesting_main/com/clowcadia/test/entities/Test.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/logs/2017-03-14-1.log.gz" afterPath="$PROJECT_DIR$/run/logs/2017-03-14-1.log.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/logs/2017-03-14-2.log.gz" afterPath="$PROJECT_DIR$/run/logs/2017-03-14-2.log.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/logs/2017-03-14-3.log.gz" afterPath="$PROJECT_DIR$/run/logs/2017-03-14-3.log.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/logs/2017-03-14-4.log.gz" afterPath="$PROJECT_DIR$/run/logs/2017-03-14-4.log.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/logs/2017-03-14-5.log.gz" afterPath="$PROJECT_DIR$/run/logs/2017-03-14-5.log.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/logs/2017-03-14-6.log.gz" afterPath="$PROJECT_DIR$/run/logs/2017-03-14-6.log.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/logs/2017-03-14-7.log.gz" afterPath="$PROJECT_DIR$/run/logs/2017-03-14-7.log.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/saves/New World/DIM-1/data/villages_nether.dat" afterPath="$PROJECT_DIR$/run/saves/New World/DIM-1/data/villages_nether.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/saves/New World/DIM1/data/villages_end.dat" afterPath="$PROJECT_DIR$/run/saves/New World/DIM1/data/villages_end.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/saves/New World/data/villages.dat" afterPath="$PROJECT_DIR$/run/saves/New World/data/villages.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/saves/New World/level.dat" afterPath="$PROJECT_DIR$/run/saves/New World/level.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/saves/New World/level.dat_old" afterPath="$PROJECT_DIR$/run/saves/New World/level.dat_old" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/saves/New World/playerdata/76f91b54-e2b9-4eca-9587-fd39de93ddba.dat" afterPath="$PROJECT_DIR$/run/saves/New World/playerdata/76f91b54-e2b9-4eca-9587-fd39de93ddba.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/saves/New World/region/r.-1.0.mca" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.-1.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/saves/New World/region/r.0.0.mca" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.0.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/saves/New World/session.lock" afterPath="$PROJECT_DIR$/run/saves/New World/session.lock" />
+    <list default="true" id="9b4417f9-8c90-432c-a13a-c11e9fc948f4" name="Default" comment="working goto ai task">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/config/splash.properties" afterPath="$PROJECT_DIR$/run/config/splash.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/logs/fml-client-1.log" afterPath="$PROJECT_DIR$/run/logs/fml-client-1.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/logs/fml-client-2.log" afterPath="$PROJECT_DIR$/run/logs/fml-client-2.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/logs/fml-client-3.log" afterPath="$PROJECT_DIR$/run/logs/fml-client-3.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/logs/fml-client-latest.log" afterPath="$PROJECT_DIR$/run/logs/fml-client-latest.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/logs/fml-junk-earlystartup.log" afterPath="$PROJECT_DIR$/run/logs/fml-junk-earlystartup.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/logs/latest.log" afterPath="$PROJECT_DIR$/run/logs/latest.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/saves/New World/stats/76f91b54-e2b9-4eca-9587-fd39de93ddba.json" afterPath="$PROJECT_DIR$/run/saves/New World/stats/76f91b54-e2b9-4eca-9587-fd39de93ddba.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/usercache.json" afterPath="$PROJECT_DIR$/run/usercache.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clowcadia/test/entities/ai/TaskAIGoTo.java" afterPath="$PROJECT_DIR$/src/main/java/com/clowcadia/test/entities/ai/TaskAIGoTo.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -117,8 +91,8 @@
       <file leaf-file-name="TaskAIGoTo.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/clowcadia/test/entities/ai/TaskAIGoTo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+            <state relative-caret-position="252">
+              <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -663,7 +637,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489543420092</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="working goto ai task">
+      <created>1489544657026</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1489544657026</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -710,7 +691,8 @@
     <MESSAGE value="something wrong?dd" />
     <MESSAGE value="add&#10;" />
     <MESSAGE value="trying to move entity&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to move entity&#10;" />
+    <MESSAGE value="working goto ai task" />
+    <option name="LAST_COMMIT_MESSAGE" value="working goto ai task" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -871,8 +853,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/clowcadia/test/entities/ai/TaskAIGoTo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        <state relative-caret-position="252">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

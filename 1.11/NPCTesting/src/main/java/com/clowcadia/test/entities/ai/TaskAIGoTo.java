@@ -26,7 +26,8 @@ public class TaskAIGoTo extends EntityAIBase{
 	}
 
     public void startExecuting(){
-		//this.test.getNavigator().tryMoveToXYZ(-21, 61, 265, goToSpeed);
+        Utils.getLogger().info("TaskAIGoTo: startExecuting");
+        
         test.getNavigator().tryMoveToXYZ(-30, 59, 261, goToSpeed);
         super.startExecuting();
 	}
