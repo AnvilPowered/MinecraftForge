@@ -20,10 +20,9 @@ public class TaskAIGoTo extends EntityAIBase{
 	public boolean shouldExecute() {
 		Utils.getLogger().info("TaskAIGoTo: shouldExecute");
 		
-        if (!(test.getDistance(-30, 59, 261)<2)){
-            return true;
-        } else return false;
-	}
+        if (!(test.getDistance(-30, 59, 261)<2)) return true;
+        else return false;
+	}///dddd
 
     public void startExecuting(){
         Utils.getLogger().info("TaskAIGoTo: startExecuting");
