@@ -2,20 +2,14 @@ package com.clowcadia.test.entities;
 
 import com.clowcadia.test.GuiHandler;
 import com.clowcadia.test.TestModHandler;
-import com.clowcadia.test.ai.TaskAIGoTo;
 import com.clowcadia.test.utils.Utils;
-
+import com.clowcadia.test.entities.ai.TaskAIGoTo;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIFollowOwner;
-import net.minecraft.entity.ai.EntityAITempt;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
@@ -30,7 +24,7 @@ public class Test extends EntityTameable{
 	private int stomach;	
 	private int stomachCap = 800;
 	//private PathNavigate path;
-	
+	//
 	public Test(World worldIn) {
 		super(worldIn);
 		Utils.getLogger().info("Test: Constructor");
