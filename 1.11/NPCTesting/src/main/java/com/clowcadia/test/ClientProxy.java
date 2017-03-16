@@ -22,6 +22,7 @@ public class ClientProxy extends CommonProxy{
 		Utils.getLogger().info("ClientProxy: init");
 		super.init();
 		
+		ItemHandler.registerRenders();
 		EntitiesLivingHandler.registerEntity();
 		NetworkRegistry.INSTANCE.registerGuiHandler(ModHandler.instance, new GuiHandler());
 	}
