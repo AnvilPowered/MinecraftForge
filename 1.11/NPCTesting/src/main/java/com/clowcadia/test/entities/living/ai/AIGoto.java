@@ -3,11 +3,12 @@ package com.clowcadia.test.entities.living.ai;
 import com.clowcadia.test.entities.living.Test;
 import com.clowcadia.test.utils.Utils;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.pathfinding.PathNodeType;
+import net.minecraft.util.math.BlockPos;
 
 public class AIGoto extends EntityAIBase{
 	
 	private final Test test;
+	private BlockPos targetPos;
     private final double goToSpeed;
     private int timeToRecalcPath;
     
@@ -21,35 +22,31 @@ public class AIGoto extends EntityAIBase{
 	@Override
 	public boolean shouldExecute() {
 		Utils.getLogger().info("AIGoto: shouldExecute");
-        if (test.getTargetPos() != null)
-        Utils.getLogger().info("AIGoto: shouldExecute: "+test.getDistanceSq(test.getTargetPos()));
-        return test.targetPos != null && !(test.getDistanceSq(test.getTargetPos()) < 1) ;
+		this.targetPos = test.targetPos;
+        if (this.targetPos != null)
+        Utils.getLogger().info("AIGoto: shouldExecute: "+test.getDistanceSq(this.targetPos));
+        return this.targetPos != null && !(test.getDistanceSq(this.targetPos) < 1) ;
 	}
 
     public void startExecuting(){
         Utils.getLogger().info("AIGoto: startExecuting");
     
         this.timeToRecalcPath = 0;
-        //this.oldWaterCost = this.test.getPathPriority(PathNodeType.WATER);
-        //this.test.setPathPriority(PathNodeType.WATER, 0.0F);
-        //
 	}
     
     public boolean continueExecuting() {
-        return !(test.getDistanceSq(test.getTargetPos()) < 1);
+        return !(test.getDistanceSq(this.targetPos) < 1);
     }
     
     @Override
     public void resetTask() {
-        //this.test.getNavigator().clearPathEntity();
-        //this.test.setPathPriority(PathNodeType.WATER, this.oldWaterCost);
     }
     
     @Override
     public void updateTask() {
         if (--this.timeToRecalcPath <= 0) {
             this.timeToRecalcPath = 10;
-            test.getNavigator().tryMoveToXYZ(test.getTargetPos().getX(), test.getTargetPos().getY(), test.getTargetPos().getY(), goToSpeed);
+            test.getNavigator().tryMoveToXYZ(this.targetPos.getX(), this.targetPos.getY(), this.targetPos.getY(), goToSpeed);
         }
     }
 }

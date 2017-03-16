@@ -6,6 +6,7 @@ package com.clowcadia.test.entities.living;
 import com.clowcadia.test.entities.living.ai.AIGoto;
 import com.clowcadia.test.init.GuiHandler;
 import com.clowcadia.test.ModHandler;
+import com.clowcadia.test.init.ItemHandler;
 import com.clowcadia.test.items.ItemTarget;
 import com.clowcadia.test.utils.Utils;
 
@@ -45,7 +46,7 @@ public class Test extends EntityTameable{
         Utils.getLogger().info("Test: initEntityAI");
 		//this.tasks.addTask(0, new EntityAITempt(this, 0.5d, Items.APPLE, false));
 		//this.tasks.addTask(1, new EntityAIFollowOwner(this, 1.0D, 10.0F, 0.5F));
-		this.tasks.addTask(0, new AIGoto(this, 1.0F));
+        this.tasks.addTask(0, new AIGoto(this, 1.0F));
 	}
 	
 	public int getStomach(){
@@ -72,10 +73,6 @@ public class Test extends EntityTameable{
 		}
 		Utils.getLogger().info("Owner: "+this.getOwner()+" is tamed "+this.isTamed());
 	}
-	
-	public BlockPos getTargetPos(){
-	    return this.targetPos;
-    }
 	
 	@Override
 	public boolean isAIDisabled() {
@@ -116,10 +113,14 @@ public class Test extends EntityTameable{
 					foodStack.splitStack(1);
 					this.stomach += 40;
 				}
-				if(foodStack.getUnlocalizedName().equals("item.target")){
+				if(foodStack.getItem() == ItemHandler.target){
                     this.target = (ItemTarget)foodStack.getItem();
-                    this.targetPos = this.target.getTarget();
-                    Utils.getLogger().info("Test: onEntityUpdate: "+ this.targetPos);
+                    if (this.target.targetPos!=null){
+                        this.targetPos = this.target.targetPos;
+                        
+                    }
+                    
+                    if (this.targetPos!=null) Utils.getLogger().info("Test: onEntityUpdate: "+ this.targetPos.getX());
                 }
 			}				
 		}			

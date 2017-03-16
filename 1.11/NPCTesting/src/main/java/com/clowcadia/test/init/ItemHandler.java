@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemHandler {
     
-    private static Item target;
+    public static Item target;
     //
     public static void registerItems(){
         Utils.getLogger().info("ItemHandler: registerItems");

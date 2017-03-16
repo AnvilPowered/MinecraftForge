@@ -14,9 +14,9 @@ import net.minecraft.world.World;
 
 public class ItemTarget extends Item {
     
-    private BlockPos target;
+    public BlockPos targetPos;
     
-    public ItemTarget (){
+    public ItemTarget() {
         Utils.getLogger().info("ItemTarget: Constructor");
         
         setUnlocalizedName("target");
@@ -27,7 +27,7 @@ public class ItemTarget extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         Utils.getLogger().info("ItemTarget: onItemRightClick");
-        Utils.getLogger().info("ItemTarget: onItemRightClick: "+target+" "+this.getUnlocalizedName());
+        Utils.getLogger().info("ItemTarget: onItemRightClick: " + targetPos + " " + this.getUnlocalizedName());
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
     
@@ -35,12 +35,7 @@ public class ItemTarget extends Item {
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         Utils.getLogger().info("ItemTarget: onItemUse");
         
-        this.target = pos;
+        this.targetPos = pos;
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
-        
-    }
-    
-    public BlockPos getTarget() {
-        return target;
     }
 }
