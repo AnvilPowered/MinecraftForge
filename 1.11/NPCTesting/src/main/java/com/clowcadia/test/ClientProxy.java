@@ -13,7 +13,6 @@ public class ClientProxy extends CommonProxy{
 		Utils.getLogger().info("ClientProxy: preInit");
 		super.preInit();
 		
-		ItemHandler.registerItems();
 		EntitiesLivingHandler.registerAllModels();
 	}
 	

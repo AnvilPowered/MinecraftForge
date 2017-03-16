@@ -16,7 +16,6 @@ public class RenderTestFactory implements IRenderFactory<EntityTameable>{
 
 	@Override
 	public Render<? super EntityTameable> createRenderFor(RenderManager manager) {
-		// TODO Auto-generated method stub
 		return new RenderEntityTest(manager, new ModelBiped(), 1.0f);
 	}
 
