@@ -11,14 +11,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ItemHandler {
     
     private static Item target;
-    
+    //
     public static void registerItems(){
         target = new Item();
         registerItem(target, "target", CreativeTabs.REDSTONE);
         
     }
     
-    public static void registerItem(Item item, String name, CreativeTabs tab){
+    private static void registerItem(Item item, String name, CreativeTabs tab){
         item.setUnlocalizedName(name).setCreativeTab(tab);
         GameRegistry.register(item, new ResourceLocation(ModHandler.modId, name));
     }
