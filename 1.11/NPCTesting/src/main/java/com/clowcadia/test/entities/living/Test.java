@@ -36,7 +36,7 @@ public class Test extends EntityTameable{
 	protected void initEntityAI(){
 		//this.tasks.addTask(0, new EntityAITempt(this, 0.5d, Items.APPLE, false));
 		//this.tasks.addTask(1, new EntityAIFollowOwner(this, 1.0D, 10.0F, 0.5F));
-		this.tasks.addTask(0, new AIGoto(this, 10.0F));
+		this.tasks.addTask(0, new AIGoto(this, 1.0F));
 	}
 	
 	public int getStomach(){
@@ -112,16 +112,14 @@ public class Test extends EntityTameable{
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		Utils.getLogger().info("Test: getCapability");
 		
-		if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T) this.handler;		
-		return super.getCapability(capability, facing);
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T) this.handler : super.getCapability(capability, facing);
 	}
 	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
 		Utils.getLogger().info("Test: hasCapability");
 		
-		if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
-		return super.hasCapability(capability, facing);
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY||super.hasCapability(capability, facing);
 	}
 	
 	@Override

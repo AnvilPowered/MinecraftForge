@@ -1,8 +1,8 @@
 package com.clowcadia.test;
 
+import com.clowcadia.test.init.EntitiesLivingHandler;
+import com.clowcadia.test.init.ItemHandler;
 import com.clowcadia.test.init.GuiHandler;
-import com.clowcadia.test.init.ModelHandler;
-import com.clowcadia.test.init.EntitiesHandler;
 import com.clowcadia.test.utils.Utils;
 
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -13,7 +13,8 @@ public class ClientProxy extends CommonProxy{
 		Utils.getLogger().info("ClientProxy: preInit");
 		super.preInit();
 		
-		ModelHandler.registerAllModels();
+		ItemHandler.registerItems();
+		EntitiesLivingHandler.registerAllModels();
 	}
 	
 	@Override
@@ -21,7 +22,7 @@ public class ClientProxy extends CommonProxy{
 		Utils.getLogger().info("ClientProxy: init");
 		super.init();
 		
-		EntitiesHandler.registerEntity();
+		EntitiesLivingHandler.registerEntity();
 		NetworkRegistry.INSTANCE.registerGuiHandler(ModHandler.instance, new GuiHandler());
 	}
 
