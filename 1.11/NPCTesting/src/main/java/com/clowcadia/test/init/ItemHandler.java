@@ -13,10 +13,14 @@ public class ItemHandler {
     private static Item target;
     
     public static void registerItems(){
+        target = new Item();
+        registerItem(target, "target", CreativeTabs.REDSTONE);
         
-        target = new Item().setUnlocalizedName("target").setCreativeTab(CreativeTabs.REDSTONE);
-        GameRegistry.register(target,new ResourceLocation(ModHandler.modId, "target"));
-        
+    }
+    
+    public static void registerItem(Item item, String name, CreativeTabs tab){
+        item.setUnlocalizedName(name).setCreativeTab(tab);
+        GameRegistry.register(item, new ResourceLocation(ModHandler.modId, name));
     }
     
     public static void registerRenders(){
