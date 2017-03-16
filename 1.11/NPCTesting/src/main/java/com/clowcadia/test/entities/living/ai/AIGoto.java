@@ -10,7 +10,6 @@ public class AIGoto extends EntityAIBase{
 	private final Test test;
     private final double goToSpeed;
     private int timeToRecalcPath;
-    private float oldWaterCost;
     
     public AIGoto(Test test, double goToSpeed) {
     	Utils.getLogger().info("AIGoto: Constructor");
@@ -22,8 +21,9 @@ public class AIGoto extends EntityAIBase{
 	@Override
 	public boolean shouldExecute() {
 		Utils.getLogger().info("AIGoto: shouldExecute");
-        
-        return !(test.getDistance(- 30, 59, 261) < 2);
+        if (test.getTargetPos() != null)
+        Utils.getLogger().info("AIGoto: shouldExecute: "+test.getDistanceSq(test.getTargetPos()));
+        return test.targetPos != null && !(test.getDistanceSq(test.getTargetPos()) < 1) ;
 	}
 
     public void startExecuting(){
@@ -36,7 +36,7 @@ public class AIGoto extends EntityAIBase{
 	}
     
     public boolean continueExecuting() {
-        return !(test.getDistance(- 31, 59, 255) < 0);
+        return !(test.getDistanceSq(test.getTargetPos()) < 1);
     }
     
     @Override
@@ -49,7 +49,7 @@ public class AIGoto extends EntityAIBase{
     public void updateTask() {
         if (--this.timeToRecalcPath <= 0) {
             this.timeToRecalcPath = 10;
-            test.getNavigator().tryMoveToXYZ(-31, 59, 255, goToSpeed);
+            test.getNavigator().tryMoveToXYZ(test.getTargetPos().getX(), test.getTargetPos().getY(), test.getTargetPos().getY(), goToSpeed);
         }
     }
 }

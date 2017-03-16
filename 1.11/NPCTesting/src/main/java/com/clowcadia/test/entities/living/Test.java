@@ -1,9 +1,14 @@
 package com.clowcadia.test.entities.living;
 
+
+
+
 import com.clowcadia.test.entities.living.ai.AIGoto;
 import com.clowcadia.test.init.GuiHandler;
 import com.clowcadia.test.ModHandler;
+import com.clowcadia.test.items.ItemTarget;
 import com.clowcadia.test.utils.Utils;
+
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -22,6 +28,8 @@ public class Test extends EntityTameable{
 	private final ItemStackHandler handler;
 	private int stomach;	
 	private int stomachCap = 800;
+	private ItemTarget target;
+	public BlockPos targetPos;
 	
 	public Test(World worldIn) {
 		super(worldIn);
@@ -34,6 +42,7 @@ public class Test extends EntityTameable{
 	}	
 	
 	protected void initEntityAI(){
+        Utils.getLogger().info("Test: initEntityAI");
 		//this.tasks.addTask(0, new EntityAITempt(this, 0.5d, Items.APPLE, false));
 		//this.tasks.addTask(1, new EntityAIFollowOwner(this, 1.0D, 10.0F, 0.5F));
 		this.tasks.addTask(0, new AIGoto(this, 1.0F));
@@ -63,6 +72,10 @@ public class Test extends EntityTameable{
 		}
 		Utils.getLogger().info("Owner: "+this.getOwner()+" is tamed "+this.isTamed());
 	}
+	
+	public BlockPos getTargetPos(){
+	    return this.targetPos;
+    }
 	
 	@Override
 	public boolean isAIDisabled() {
@@ -101,8 +114,13 @@ public class Test extends EntityTameable{
 			if(!this.world.isRemote){
 				if(foodStack.getUnlocalizedName().equals(Items.APPLE.getUnlocalizedName()) && stomach != stomachCap){					
 					foodStack.splitStack(1);
-					stomach += 40;
-				}				
+					this.stomach += 40;
+				}
+				if(foodStack.getUnlocalizedName().equals("item.target")){
+                    this.target = (ItemTarget)foodStack.getItem();
+                    this.targetPos = this.target.getTarget();
+                    Utils.getLogger().info("Test: onEntityUpdate: "+ this.targetPos);
+                }
 			}				
 		}			
 		super.onEntityUpdate();

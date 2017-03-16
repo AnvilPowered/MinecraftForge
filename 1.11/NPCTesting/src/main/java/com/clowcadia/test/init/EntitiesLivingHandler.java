@@ -27,13 +27,13 @@ public class EntitiesLivingHandler {
 	}
 	
 	public static void registerAllModels(){
-		Utils.getLogger().info("ModelHandler: registerAllModels");
+		Utils.getLogger().info("EntitiesLivingHandler: registerAllModels");
 		
 		registerMobModels();
 	}
 	
 	private static void registerMobModels(){
-		Utils.getLogger().info("ModelHandler: registerMobModels");
+		Utils.getLogger().info("EntitiesLivingHandler: registerMobModels");
 		
 		registerMobModel(Test.class, RenderTestFactory.INSTANCE);
 	}
@@ -41,7 +41,7 @@ public class EntitiesLivingHandler {
 	
 	private static <T extends Entity> void registerMobModel(Class<T> entity, IRenderFactory<? super T> renderFactory)
 	{
-		Utils.getLogger().info("ModelHandler: registerMobModel");
+		Utils.getLogger().info("EntitiesLivingHandler: registerMobModel");
 		
 		RenderingRegistry.registerEntityRenderingHandler(entity, renderFactory);
 	}
