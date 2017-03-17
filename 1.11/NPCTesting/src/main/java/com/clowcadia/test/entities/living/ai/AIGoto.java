@@ -21,11 +21,11 @@ public class AIGoto extends EntityAIBase{
 		
 	@Override
 	public boolean shouldExecute() {
-		Utils.getLogger().info("AIGoto: shouldExecute");
+		//Utils.getLogger().info("AIGoto: shouldExecute");
 		this.targetPos = test.targetPos;
-        if (this.targetPos != null)
-        Utils.getLogger().info("AIGoto: shouldExecute: "+test.getDistanceSq(this.targetPos));
-        return this.targetPos != null && !(test.getDistanceSq(this.targetPos) < 1) ;
+        if (test.targetPos != null)
+        Utils.getLogger().info("AIGoto: shouldExecute: "+test.getDistanceSq(test.targetPos));
+        return test.targetPos != null && !(test.getDistanceSq(test.targetPos) < 1) ;
 	}
 
     public void startExecuting(){
@@ -35,7 +35,7 @@ public class AIGoto extends EntityAIBase{
 	}
     
     public boolean continueExecuting() {
-        return !(test.getDistanceSq(this.targetPos) < 1);
+        return !(test.getDistanceSq(test.targetPos) < 1);
     }
     
     @Override
@@ -46,7 +46,7 @@ public class AIGoto extends EntityAIBase{
     public void updateTask() {
         if (--this.timeToRecalcPath <= 0) {
             this.timeToRecalcPath = 10;
-            test.getNavigator().tryMoveToXYZ(this.targetPos.getX(), this.targetPos.getY(), this.targetPos.getY(), goToSpeed);
+            test.getNavigator().tryMoveToXYZ(test.targetPos.getX(), test.targetPos.getY(), test.targetPos.getY(), goToSpeed);
         }
     }
 }

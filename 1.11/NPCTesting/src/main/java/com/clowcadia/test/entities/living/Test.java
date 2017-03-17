@@ -115,10 +115,10 @@ public class Test extends EntityTameable{
 				}
 				if(foodStack.getItem() == ItemHandler.target){
                     this.target = (ItemTarget)foodStack.getItem();
-                    if (this.target.targetPos!=null){
+                    /*if (this.target.=null){
                         this.targetPos = this.target.targetPos;
                         
-                    }
+                    }*/
                     
                     if (this.targetPos!=null) Utils.getLogger().info("Test: onEntityUpdate: "+ this.targetPos.getX());
                 }
