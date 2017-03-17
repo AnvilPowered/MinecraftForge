@@ -6,8 +6,6 @@ package com.clowcadia.test.entities.living;
 import com.clowcadia.test.entities.living.ai.AIGoto;
 import com.clowcadia.test.init.GuiHandler;
 import com.clowcadia.test.ModHandler;
-import com.clowcadia.test.init.ItemHandler;
-import com.clowcadia.test.items.ItemTarget;
 import com.clowcadia.test.utils.Utils;
 
 import net.minecraft.entity.EntityAgeable;
@@ -18,7 +16,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -26,15 +23,13 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class Test extends EntityTameable{
 	
-	private final ItemStackHandler handler;
+	public final ItemStackHandler handler;
 	private int stomach;	
 	private int stomachCap = 800;
-	private ItemTarget target;
-	public BlockPos targetPos;
 	
 	public Test(World worldIn) {
 		super(worldIn);
-		Utils.getLogger().info("Test: Constructor");
+		//Utils.getLogger().info("Test: Constructor");
 		
 		this.setSize(1.0F, 1.0F);
 		this.handler = new ItemStackHandler(9); 
@@ -50,7 +45,7 @@ public class Test extends EntityTameable{
 	}
 	
 	public int getStomach(){
-		Utils.getLogger().info("Test: getStomach");
+		//Utils.getLogger().info("Test: getStomach");
 		
 		return this.stomach;
 	}
@@ -62,16 +57,16 @@ public class Test extends EntityTameable{
 	}
 	
 	public void getOwner(EntityPlayer player){
-		Utils.getLogger().info("Test: getOwner");
+		//Utils.getLogger().info("Test: getOwner");
 		
-		Utils.getLogger().info("Player: "+player.getUniqueID());
+		//Utils.getLogger().info("Player: "+player.getUniqueID());
 		if(stomach == stomachCap){
 			this.setTamed(true);
 			this.navigator.clearPathEntity();
 			this.setOwnerId(player.getUniqueID());	
 			//this.path.tryMoveToXYZ(29, 62, 265, 10.0F);
 		}
-		Utils.getLogger().info("Owner: "+this.getOwner()+" is tamed "+this.isTamed());
+		//Utils.getLogger().info("Owner: "+this.getOwner()+" is tamed "+this.isTamed());
 	}
 	
 	@Override
@@ -96,7 +91,7 @@ public class Test extends EntityTameable{
 		if (!this.world.isRemote)
 		{			
 			int basicID = this.getEntityId(); //for inputing into x/y/z in the opne gui to pass the entety id
-			System.out.println("Player has interacted with the mob");	
+			//System.out.println("Player has interacted with the mob");
 			player.openGui(ModHandler.instance, GuiHandler.TEST, this.world, basicID,0, 0);
 		}
 		return true;
@@ -109,19 +104,19 @@ public class Test extends EntityTameable{
 		ItemStack foodStack = handler.getStackInSlot(0);
 		if (this.world != null){
 			if(!this.world.isRemote){
-				if(foodStack.getUnlocalizedName().equals(Items.APPLE.getUnlocalizedName()) && stomach != stomachCap){					
+				if(foodStack.getItem() == Items.APPLE && stomach != stomachCap){
 					foodStack.splitStack(1);
 					this.stomach += 40;
 				}
-				if(foodStack.getItem() == ItemHandler.target){
+	/*			if(foodStack.getItem() == ItemHandler.target){
                     this.target = (ItemTarget)foodStack.getItem();
-                    /*if (this.target.=null){
+                    *//*if (this.target.=null){
                         this.targetPos = this.target.targetPos;
                         
-                    }*/
+                    }*//*
                     
                     if (this.targetPos!=null) Utils.getLogger().info("Test: onEntityUpdate: "+ this.targetPos.getX());
-                }
+                }*/
 			}				
 		}			
 		super.onEntityUpdate();

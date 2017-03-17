@@ -14,8 +14,6 @@ import net.minecraft.world.World;
 
 public class ItemTarget extends Item {
     
-    public BlockPos targetPos;
-    
     public ItemTarget() {
         Utils.getLogger().info("ItemTarget: Constructor");
         
@@ -42,7 +40,6 @@ public class ItemTarget extends Item {
         }
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
     }
-    
     
     
 }
