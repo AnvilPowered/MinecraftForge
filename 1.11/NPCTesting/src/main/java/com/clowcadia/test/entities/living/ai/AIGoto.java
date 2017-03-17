@@ -28,21 +28,20 @@ public class AIGoto extends EntityAIBase{
 		//Utils.getLogger().info("AIGoto: shouldExecute");
         ItemStack stack = this.test.handler.getStackInSlot(0);
         if (this.test.world != null) {
-            if (! this.test.world.isRemote) {
                 if (stack.getItem() == ItemHandler.target) {
                     this.targetX = stack.getItem().getNBTShareTag(stack).getInteger("targetX");
                     this.targetY = stack.getItem().getNBTShareTag(stack).getInteger("targetY");
                     this.targetZ = stack.getItem().getNBTShareTag(stack).getInteger("targetZ");
                     Utils.getLogger().info("AIGoto: shouldExecute: " + targetX + " " + targetY + " " + targetZ);
                     this.targetSet = ! (test.getDistance(targetX, targetY, targetZ) < 1);
-                }else targetSet = false;
-            }else targetSet = false;
-        }else targetSet = false;
-        return targetSet;
-		/*this.targetPos = test.targetPos;
-        if (test.targetPos != null)
+                }else{
+                    targetSet = false;
+                }
+        }else{
+            targetSet = false;
+        }
         
-        return test.targetPos != null && !(test.getDistanceSq(test.targetPos) < 1) ;*/
+        return targetSet;
 	}
 
     public void startExecuting(){
@@ -52,15 +51,18 @@ public class AIGoto extends EntityAIBase{
 	}
     
     public boolean continueExecuting() {
+        //Utils.getLogger().info("AIGoto: continueExecuting");
         return !(test.getDistance(targetX, targetY, targetZ) < 1);
     }
     
     @Override
     public void resetTask() {
+        Utils.getLogger().info("AIGoto: resetTask");
     }
     
     @Override
     public void updateTask() {
+        //Utils.getLogger().info("AIGoto: updateTask");
         if (--this.timeToRecalcPath <= 0) {
             this.timeToRecalcPath = 10;
             test.getNavigator().tryMoveToXYZ(targetX, targetY, targetZ, goToSpeed);

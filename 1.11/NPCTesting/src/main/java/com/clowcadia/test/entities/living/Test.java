@@ -59,12 +59,10 @@ public class Test extends EntityTameable{
 	public void getOwner(EntityPlayer player){
 		//Utils.getLogger().info("Test: getOwner");
 		
-		//Utils.getLogger().info("Player: "+player.getUniqueID());
 		if(stomach == stomachCap){
 			this.setTamed(true);
 			this.navigator.clearPathEntity();
-			this.setOwnerId(player.getUniqueID());	
-			//this.path.tryMoveToXYZ(29, 62, 265, 10.0F);
+			this.setOwnerId(player.getUniqueID());
 		}
 		//Utils.getLogger().info("Owner: "+this.getOwner()+" is tamed "+this.isTamed());
 	}
@@ -90,8 +88,7 @@ public class Test extends EntityTameable{
 		
 		if (!this.world.isRemote)
 		{			
-			int basicID = this.getEntityId(); //for inputing into x/y/z in the opne gui to pass the entety id
-			//System.out.println("Player has interacted with the mob");
+			int basicID = this.getEntityId();
 			player.openGui(ModHandler.instance, GuiHandler.TEST, this.world, basicID,0, 0);
 		}
 		return true;
@@ -108,15 +105,6 @@ public class Test extends EntityTameable{
 					foodStack.splitStack(1);
 					this.stomach += 40;
 				}
-	/*			if(foodStack.getItem() == ItemHandler.target){
-                    this.target = (ItemTarget)foodStack.getItem();
-                    *//*if (this.target.=null){
-                        this.targetPos = this.target.targetPos;
-                        
-                    }*//*
-                    
-                    if (this.targetPos!=null) Utils.getLogger().info("Test: onEntityUpdate: "+ this.targetPos.getX());
-                }*/
 			}				
 		}			
 		super.onEntityUpdate();
