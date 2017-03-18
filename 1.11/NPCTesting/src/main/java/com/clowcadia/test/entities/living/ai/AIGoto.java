@@ -32,8 +32,8 @@ public class AIGoto extends EntityAIBase{
         if (this.test.world != null && !this.test.world.isRemote) {
             if (stack.getItem() == ItemHandler.target) {
                 
-                NBTTagCompound nbt = stack.getItem().getNBTShareTag(stack);
-                //OR NBTTagCompound nbt = stack.getTagCompound();
+                //NBTTagCompound nbt = stack.getItem().getNBTShareTag(stack);
+                NBTTagCompound nbt = stack.getTagCompound();
                 
                 /*this.targetX = test.getTargetPos("x");
                 this.targetY = test.getTargetPos("y");
