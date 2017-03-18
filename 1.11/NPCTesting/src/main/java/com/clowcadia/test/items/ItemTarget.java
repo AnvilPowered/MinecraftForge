@@ -37,6 +37,7 @@ public class ItemTarget extends Item {
                 nbt.setInteger("targetX",pos.getX());
                 nbt.setInteger("targetY",pos.getY());
                 nbt.setInteger("targetZ",pos.getZ());
+                stack.setTagCompound(nbt);
                /* targetX = nbt.getInteger("targetX");
                 targetY = nbt.getInteger("targetY");
                 targetZ = nbt.getInteger("targetZ");*/
