@@ -45,7 +45,7 @@ public class ContainerBasic extends Container{
 	
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		//Utils.getLogger().info("ContainerBasic: canInteractWith");
+		Utils.getLogger().info("ContainerBasic: canInteractWith");
 		
 		((Test) this.entity).getOwner(player);
 		return !player.isSpectator();
@@ -54,7 +54,7 @@ public class ContainerBasic extends Container{
 	@Override
 	public void detectAndSendChanges() {
 		super.detectAndSendChanges();
-		//Utils.getLogger().info("ContainerBasic: detectAndSendChanges");
+		Utils.getLogger().info("ContainerBasic: detectAndSendChanges");
 		
 		IContainerListener icontainerlistener = this.listeners.get(0);
 		if(this.stomach!=((Test) this.entity).getStomach()){

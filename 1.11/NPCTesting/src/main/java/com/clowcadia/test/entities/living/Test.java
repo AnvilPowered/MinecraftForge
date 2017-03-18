@@ -37,10 +37,10 @@ public class Test extends EntityTameable{
 		//Utils.getLogger().info("Test: Constructor");
 		
 		this.setSize(1.0F, 1.0F);
-		this.handler = new ItemStackHandler(9); 
+		this.handler = new ItemStackHandler(9);
 		this.stomach = 0;
 		
-	}	
+	}
 	
 	protected void initEntityAI(){
         Utils.getLogger().info("Test: initEntityAI");
@@ -104,7 +104,7 @@ public class Test extends EntityTameable{
 		Utils.getLogger().info("Test: processInteract");
 		
 		if (!this.world.isRemote)
-		{			
+		{
 			int basicID = this.getEntityId();
 			player.openGui(ModHandler.instance, GuiHandler.TEST, this.world, basicID,0, 0);
 		}
