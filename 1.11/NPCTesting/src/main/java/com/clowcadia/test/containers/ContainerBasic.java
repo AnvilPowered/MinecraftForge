@@ -16,10 +16,10 @@ import net.minecraftforge.items.SlotItemHandler;
 public class ContainerBasic extends Container{
 	
 	public Entity entity;
-	private int stomach;
+	private int stomach;/*
 	private int targetX;
 	private int targetY;
-	private int targetZ;
+	private int targetZ;*/
 	
 	public ContainerBasic(IInventory playerInv, Entity entity) {
 		this.entity = entity;
@@ -60,7 +60,7 @@ public class ContainerBasic extends Container{
 		if(this.stomach!=((Test) this.entity).getStomach()){
 			icontainerlistener.sendProgressBarUpdate(this, 0, ((Test) this.entity).getStomach());
 		}
-		this.stomach = ((Test) this.entity).getStomach();
+		this.stomach = ((Test) this.entity).getStomach();/*
         if(this.targetX!=((Test) this.entity).getTargetPos("x")){
             icontainerlistener.sendProgressBarUpdate(this, 1, ((Test) this.entity).getTargetPos("x"));
         }
@@ -72,17 +72,17 @@ public class ContainerBasic extends Container{
         if(this.targetZ!=((Test) this.entity).getTargetPos("z")){
             icontainerlistener.sendProgressBarUpdate(this, 3, ((Test) this.entity).getTargetPos("z"));
         }
-        this.targetZ = ((Test) this.entity).getTargetPos("z");
+        this.targetZ = ((Test) this.entity).getTargetPos("z");*/
 	}
 	
 	@Override
 	public void updateProgressBar(int id, int data) {
 		Utils.getLogger().info("ContainerBasic: updateProgressBar");
 		
-		if(id==0) ((Test) this.entity).setStomach(data);
+		if(id==0) ((Test) this.entity).setStomach(data);/*
 		else if(id==1) ((Test) this.entity).setTargetPos("x",data);
         else if(id==2) ((Test) this.entity).setTargetPos("y",data);
-        else if(id==3) ((Test) this.entity).setTargetPos("z",data);
+        else if(id==3) ((Test) this.entity).setTargetPos("z",data);*/
 	}
 }
 

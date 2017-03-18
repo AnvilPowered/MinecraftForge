@@ -5,35 +5,42 @@ import com.clowcadia.test.init.ItemHandler;
 import com.clowcadia.test.utils.Utils;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 
 public class AIGoto extends EntityAIBase{
-	
-	private final Test test;
+    
+    private final Test test;
     private final double goToSpeed;
     private int timeToRecalcPath;
-    private boolean targetSet;
+    private boolean targetSet;/*
     private int targetX;
     private int targetY;
-    private int targetZ;
+    private int targetZ;*/
     
     public AIGoto(Test test, double goToSpeed) {
-    	Utils.getLogger().info("AIGoto: Constructor");
-		this.test = test;
-		this.goToSpeed = goToSpeed;
-		this.setMutexBits(1);
+        Utils.getLogger().info("AIGoto: Constructor");
+        this.test = test;
+        this.goToSpeed = goToSpeed;
+        this.setMutexBits(1);
     }
-		
-	@Override
-	public boolean shouldExecute() {
-		//Utils.getLogger().info("AIGoto: shouldExecute");
+    
+    @Override
+    public boolean shouldExecute() {
+        //Utils.getLogger().info("AIGoto: shouldExecute");
         ItemStack stack = this.test.handler.getStackInSlot(0);
-        if (this.test.world != null) {
+        
+        if (this.test.world != null && !this.test.world.isRemote) {
             if (stack.getItem() == ItemHandler.target) {
-                this.targetX = test.getTargetPos("x");
+                
+                NBTTagCompound nbt = stack.getItem().getNBTShareTag(stack);
+                //OR NBTTagCompound nbt = stack.getTagCompound();
+                
+                /*this.targetX = test.getTargetPos("x");
                 this.targetY = test.getTargetPos("y");
-                this.targetZ = test.getTargetPos("z");
-                Utils.getLogger().info("AIGoto: shouldExecute: " + targetX + " " + targetY + " " + targetZ);
-                this.targetSet = ! (test.getDistance(targetX, targetY, targetZ) < 1);
+                this.targetZ = test.getTargetPos("z");*/
+                //Utils.getLogger().info("AIGoto: shouldExecute: " + stack.getItem().getNBTShareTag(stack).getInteger("targetX") + " " + stack.getItem().getNBTShareTag(stack).getInteger("targetY") + " " + stack.getItem().getNBTShareTag(stack).getInteger("targetZ"));
+                Utils.getLogger().info(nbt.getInteger("targetX"));
+                this.targetSet = false;//! (test.getDistance(stack.getTagCompound().getInteger("targetX"), stack.getTagCompound().getInteger("targetY"), stack.getTagCompound().getInteger("targetZ")) < 1);
             }else{
                 targetSet = false;
             }
@@ -42,17 +49,17 @@ public class AIGoto extends EntityAIBase{
         }
         
         return targetSet;
-	}
-
+    }
+    
     public void startExecuting(){
         Utils.getLogger().info("AIGoto: startExecuting");
-    
+        
         this.timeToRecalcPath = 0;
-	}
+    }
     
     public boolean continueExecuting() {
         //Utils.getLogger().info("AIGoto: continueExecuting");
-        return !(test.getDistance(targetX, targetY, targetZ) < 1);
+        return false;//!(test.getDistance(targetX, targetY, targetZ) < 1);
     }
     
     @Override
@@ -65,7 +72,7 @@ public class AIGoto extends EntityAIBase{
         //Utils.getLogger().info("AIGoto: updateTask");
         if (--this.timeToRecalcPath <= 0) {
             this.timeToRecalcPath = 10;
-            test.getNavigator().tryMoveToXYZ(targetX, targetY, targetZ, goToSpeed);
+            //test.getNavigator().tryMoveToXYZ(targetX, targetY, targetZ, goToSpeed);
         }
     }
 }
