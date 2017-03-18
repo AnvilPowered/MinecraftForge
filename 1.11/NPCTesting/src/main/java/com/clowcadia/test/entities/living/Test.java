@@ -6,6 +6,8 @@ package com.clowcadia.test.entities.living;
 import com.clowcadia.test.entities.living.ai.AIGoto;
 import com.clowcadia.test.init.GuiHandler;
 import com.clowcadia.test.ModHandler;
+import com.clowcadia.test.init.ItemHandler;
+import com.clowcadia.test.items.ItemTarget;
 import com.clowcadia.test.utils.Utils;
 
 import net.minecraft.entity.EntityAgeable;
@@ -24,7 +26,10 @@ import net.minecraftforge.items.ItemStackHandler;
 public class Test extends EntityTameable{
 	
 	public final ItemStackHandler handler;
-	private int stomach;	
+	private int stomach;
+	public int targetX;
+	public int targetY;
+    public int targetZ;
 	private int stomachCap = 800;
 	
 	public Test(World worldIn) {
@@ -67,6 +72,18 @@ public class Test extends EntityTameable{
 		//Utils.getLogger().info("Owner: "+this.getOwner()+" is tamed "+this.isTamed());
 	}
 	
+	public int getTargetPos(String axis){
+	    if(axis == "x") return targetX;
+	    else if (axis == "y") return targetY;
+	    else return targetZ;
+    }
+    
+    public void setTargetPos(String axis, int value){
+        if(axis == "x") this.targetX = value;
+        else if (axis == "y") this.targetY = value;
+        else this.targetZ = value;
+    }
+	
 	@Override
 	public boolean isAIDisabled() {
 		//Utils.getLogger().info("test: isAIDisabled");
@@ -96,15 +113,20 @@ public class Test extends EntityTameable{
 	
 	@Override
 	public void onEntityUpdate() {
-		//Utils.getLogger().info("Test: onEntityUpdate");
+		Utils.getLogger().info("Test: onEntityUpdate: "+targetX+" "+targetY+" "+targetZ);
 		
-		ItemStack foodStack = handler.getStackInSlot(0);
+		ItemStack foodStack = this.handler.getStackInSlot(0);
 		if (this.world != null){
 			if(!this.world.isRemote){
 				if(foodStack.getItem() == Items.APPLE && stomach != stomachCap){
 					foodStack.splitStack(1);
 					this.stomach += 40;
 				}
+				if(foodStack.getItem() == ItemHandler.target){
+				    this.targetX = ((ItemTarget) foodStack.getItem()).targetX;
+                    this.targetY = ((ItemTarget) foodStack.getItem()).targetY;
+                    this.targetZ = ((ItemTarget) foodStack.getItem()).targetZ;
+                }
 			}				
 		}			
 		super.onEntityUpdate();

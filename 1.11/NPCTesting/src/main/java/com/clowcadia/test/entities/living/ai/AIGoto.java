@@ -28,15 +28,15 @@ public class AIGoto extends EntityAIBase{
 		//Utils.getLogger().info("AIGoto: shouldExecute");
         ItemStack stack = this.test.handler.getStackInSlot(0);
         if (this.test.world != null) {
-                if (stack.getItem() == ItemHandler.target) {
-                    this.targetX = stack.getItem().getNBTShareTag(stack).getInteger("targetX");
-                    this.targetY = stack.getItem().getNBTShareTag(stack).getInteger("targetY");
-                    this.targetZ = stack.getItem().getNBTShareTag(stack).getInteger("targetZ");
-                    Utils.getLogger().info("AIGoto: shouldExecute: " + targetX + " " + targetY + " " + targetZ);
-                    this.targetSet = ! (test.getDistance(targetX, targetY, targetZ) < 1);
-                }else{
-                    targetSet = false;
-                }
+            if (stack.getItem() == ItemHandler.target) {
+                this.targetX = test.getTargetPos("x");
+                this.targetY = test.getTargetPos("y");
+                this.targetZ = test.getTargetPos("z");
+                Utils.getLogger().info("AIGoto: shouldExecute: " + targetX + " " + targetY + " " + targetZ);
+                this.targetSet = ! (test.getDistance(targetX, targetY, targetZ) < 1);
+            }else{
+                targetSet = false;
+            }
         }else{
             targetSet = false;
         }
