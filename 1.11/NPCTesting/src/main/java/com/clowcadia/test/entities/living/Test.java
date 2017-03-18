@@ -21,10 +21,7 @@ import net.minecraftforge.items.ItemStackHandler;
 public class Test extends EntityTameable{
     
     public final ItemStackHandler handler;
-    private int stomach;/*
-    private int targetX;
-    private int targetY;
-    private int targetZ;*/
+    private int stomach;
     private int stomachCap = 800;
     
     public Test(World worldIn) {
@@ -67,18 +64,6 @@ public class Test extends EntityTameable{
         //Utils.getLogger().info("Owner: "+this.getOwner()+" is tamed "+this.isTamed());
     }
     
-   /* public int getTargetPos(String axis){
-        if(axis.equals("x")) return targetX;
-        else if (axis.equals("y")) return targetY;
-        else return targetZ;
-    }
-    
-    public void setTargetPos(String axis, int value){
-        if(axis.equals("x")) this.targetX = value;
-        else if (axis.equals("y")) this.targetY = value;
-        else this.targetZ = value;
-    }*/
-    
     @Override
     public boolean isAIDisabled() {
         //Utils.getLogger().info("test: isAIDisabled");
@@ -117,11 +102,6 @@ public class Test extends EntityTameable{
                     foodStack.splitStack(1);
                     this.stomach += 40;
                 }
-                /*if(foodStack.getItem() == ItemHandler.target){
-                    this.targetX = ((ItemTarget) foodStack.getItem()).targetX;
-                    this.targetY = ((ItemTarget) foodStack.getItem()).targetY;
-                    this.targetZ = ((ItemTarget) foodStack.getItem()).targetZ;
-                }*/
             }
         }
         super.onEntityUpdate();

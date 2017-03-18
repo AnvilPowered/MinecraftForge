@@ -13,11 +13,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ItemTarget extends Item {
-    
-    /*public int targetX;
-    public int targetY;
-    public int targetZ;*/
-    
+        
     public ItemTarget() {
         Utils.getLogger().info("ItemTarget: Constructor");
         setUnlocalizedName("target");
@@ -33,16 +29,12 @@ public class ItemTarget extends Item {
             NBTTagCompound nbt = stack.getTagCompound();
             if(pos!=null){
                 if(nbt==null) nbt = new NBTTagCompound();
-                //if(nbt.hasKey("targetX")){
                 nbt.setInteger("targetX",pos.getX());
                 nbt.setInteger("targetY",pos.getY());
                 nbt.setInteger("targetZ",pos.getZ());
                 stack.setTagCompound(nbt);
-               /* targetX = nbt.getInteger("targetX");
-                targetY = nbt.getInteger("targetY");
-                targetZ = nbt.getInteger("targetZ");*/
                 Utils.getLogger().info("ItemTarget: onItemUse: "+nbt.getInteger("targetX"));
-                //}
+                
                 
             }
         }

@@ -13,9 +13,6 @@ public class AIGoto extends EntityAIBase{
     private final double goToSpeed;
     private int timeToRecalcPath;
     private boolean targetSet;
-    private int targetX;
-    private int targetY;
-    private int targetZ;
     
     public AIGoto(Test test, double goToSpeed) {
         Utils.getLogger().info("AIGoto: Constructor");
@@ -32,11 +29,8 @@ public class AIGoto extends EntityAIBase{
         if (this.test.world != null && !this.test.world.isRemote){
             if(stack.getItem() == ItemHandler.target) {
                 NBTTagCompound nbt = stack.getTagCompound();
-                //this.targetX = nbt.getInteger("targetX");
-                //this.targetY = nbt.getInteger("targetY");
-                //this.targetZ = nbt.getInteger("targetZ");
                 Utils.getLogger().info(nbt.getInteger("targetX"));
-                this.targetSet = ! (test.getDistance(targetX, targetY, targetZ) < 1);
+                this.targetSet = false;//! (test.getDistance(, , ) < 1);
             }else targetSet = false;
         }else targetSet = false;
         return targetSet;
@@ -50,7 +44,7 @@ public class AIGoto extends EntityAIBase{
     
     public boolean continueExecuting() {
         //Utils.getLogger().info("AIGoto: continueExecuting");
-        return !(test.getDistance(targetX, targetY, targetZ) < 1);
+        return false;//!(test.getDistance(, , ) < 1);
     }
     
     @Override
@@ -63,7 +57,7 @@ public class AIGoto extends EntityAIBase{
         //Utils.getLogger().info("AIGoto: updateTask");
         if (--this.timeToRecalcPath <= 0) {
             this.timeToRecalcPath = 10;
-            test.getNavigator().tryMoveToXYZ(targetX, targetY, targetZ, goToSpeed);
+            //test.getNavigator().tryMoveToXYZ(, , , goToSpeed);
         }
     }
 }
