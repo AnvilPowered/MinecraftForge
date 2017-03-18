@@ -27,9 +27,9 @@ public class Test extends EntityTameable{
 	
 	public final ItemStackHandler handler;
 	private int stomach;
-	public int targetX;
-	public int targetY;
-    public int targetZ;
+	private int targetX;
+	private int targetY;
+    private int targetZ;
 	private int stomachCap = 800;
 	
 	public Test(World worldIn) {
@@ -73,14 +73,14 @@ public class Test extends EntityTameable{
 	}
 	
 	public int getTargetPos(String axis){
-	    if(axis == "x") return targetX;
-	    else if (axis == "y") return targetY;
+	    if(axis.equals("x")) return targetX;
+	    else if (axis.equals("y")) return targetY;
 	    else return targetZ;
     }
     
     public void setTargetPos(String axis, int value){
-        if(axis == "x") this.targetX = value;
-        else if (axis == "y") this.targetY = value;
+        if(axis.equals("x")) this.targetX = value;
+        else if (axis.equals("y")) this.targetY = value;
         else this.targetZ = value;
     }
 	
