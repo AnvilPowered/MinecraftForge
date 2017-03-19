@@ -39,7 +39,7 @@ public class Test extends EntityTameable{
         //this.tasks.addTask(0, new EntityAITempt(this, 0.5d, Items.APPLE, false));
         //this.tasks.addTask(1, new EntityAIFollowOwner(this, 1.0D, 10.0F, 0.5F));
         this.tasks.addTask(0, new AIGoto(this, 1.0F));
-    }
+}
     
     public int getStomach(){
         //Utils.getLogger().info("Test: getStomach");
