@@ -16,8 +16,6 @@ public class AIGoto extends EntityAIBase{
     private final Test test;
     private int timeToRecalcPath;
     private final double goToSpeed;
-    private BlockPos cPos;
-    private Block cBlock;
     
     public AIGoto(Test test, double goToSpeed) {
         Utils.getLogger().info("AIGoto: Constructor");
@@ -29,14 +27,7 @@ public class AIGoto extends EntityAIBase{
     @Override
     public boolean shouldExecute() {
         //Utils.getLogger().info("AIGoto: shouldExecute");
-        ItemStack stack = this.test.handler.getStackInSlot(0);
-        if (this.test.world != null && !this.test.world.isRemote && stack.getItem() == ItemHandler.target){
-            NBTTagCompound nbt = stack.getTagCompound();
-            this.cPos = new BlockPos(nbt.getInteger("targetX"),nbt.getInteger("targetY"),nbt.getInteger("targetZ"));
-            return ! (test.getDistanceSq(cPos) < 1);
-            //Utils.getLogger().info(this.targetSet);
-        }else return false;
-        //return targetSet;
+        return isItemAvailable();
     }
     
     public void startExecuting(){
@@ -47,7 +38,7 @@ public class AIGoto extends EntityAIBase{
     
     public boolean continueExecuting() {
         //Utils.getLogger().info("AIGoto: continueExecuting");
-        return ! (test.getDistanceSq(this.cPos) < 1);
+        return isItemAvailable();
     }
     
     @Override
@@ -60,21 +51,18 @@ public class AIGoto extends EntityAIBase{
         //Utils.getLogger().info("AIGoto: updateTask");
         if (--this.timeToRecalcPath <= 0) {
             this.timeToRecalcPath = 10;
-            test.getNavigator().tryMoveToXYZ(this.cPos.getX(), this.cPos.getY(), this.cPos.getZ(), goToSpeed);
+            test.getNavigator().tryMoveToXYZ(getPos().getX(), getPos().getY(), getPos().getZ(), goToSpeed);
             
             if (test.isCollided){
-                cBlock = getBlock(this.cPos.getX(), this.cPos.getY(), this.cPos.getZ());
-                if(cBlock== Blocks.LOG | cBlock == Blocks.LOG2){
-                    test.world.setBlockToAir(cPos);
+                if(getBlock() == Blocks.LOG | getBlock() == Blocks.LOG2){
+                    test.world.setBlockToAir(getPos());
                     
-                    for(int i=1; getBlock(this.cPos.getX(), this.cPos.getY()-i, this.cPos.getZ()) == Blocks.LOG | getBlock(this.cPos.getX(), this.cPos.getY()-i, this.cPos.getZ()) == Blocks.LOG2; i--){
-                        cPos = new BlockPos(this.cPos.getX(), this.cPos.getY()-i, this.cPos.getZ());
-                        test.world.setBlockToAir(cPos);
+                    for(int i=1; getBlock(0,-i,0) == Blocks.LOG | getBlock(0,-i,0) == Blocks.LOG2; i--){
+                        test.world.setBlockToAir(getPos(0,-i,0));
                     }
-                    
-                    for(int i = 1; getBlock(this.cPos.getX(), this.cPos.getY()+i, this.cPos.getZ()) == Blocks.LOG | getBlock(this.cPos.getX(), this.cPos.getY()+i, this.cPos.getZ()) == Blocks.LOG2; i++){
-                        cPos = new BlockPos(this.cPos.getX(), this.cPos.getY()+i, this.cPos.getZ());
-                        test.world.setBlockToAir(cPos);
+    
+                    for(int i=1; getBlock(0,+i,0) == Blocks.LOG | getBlock(0,+i,0) == Blocks.LOG2; i--){
+                        test.world.setBlockToAir(getPos(0,+i,0));
                     }
                     
                 }
@@ -82,10 +70,30 @@ public class AIGoto extends EntityAIBase{
             }
         }
     }
+    private boolean isItemAvailable(){
+        ItemStack stack = this.test.handler.getStackInSlot(0);
+        if (this.test.world != null && !this.test.world.isRemote && stack.getItem() == ItemHandler.target){
+            Utils.getLogger().info(" SET POSITION "+getPos());
+            return ! (test.getDistanceSq(getPos()) < 1);
+        }else return false;
+    }
+    private BlockPos getPos(){
+        ItemStack stack = this.test.handler.getStackInSlot(0);
+        NBTTagCompound nbt = stack.getTagCompound();
+        return new BlockPos(nbt.getInteger("targetX"),nbt.getInteger("targetY"),nbt.getInteger("targetZ"));
+    }
+    private BlockPos getPos(int x, int y, int z){
+        ItemStack stack = this.test.handler.getStackInSlot(0);
+        NBTTagCompound nbt = stack.getTagCompound();
+        return  new BlockPos(nbt.getInteger("targetX")+x,nbt.getInteger("targetY")+y,nbt.getInteger("targetZ")+z);
+    }
+    private Block getBlock(){
+        IBlockState ibs = test.world.getBlockState(getPos());
+        return ibs.getBlock();
+    }
     
     private Block getBlock(int x, int y, int z){
-        BlockPos pos = new BlockPos(x, y, z);
-        IBlockState ibs = test.world.getBlockState(pos);
+        IBlockState ibs = test.world.getBlockState(getPos(x,y,z));
         return ibs.getBlock();
     }
 }
