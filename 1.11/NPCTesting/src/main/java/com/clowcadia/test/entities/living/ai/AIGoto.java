@@ -49,60 +49,98 @@ public class AIGoto extends EntityAIBase{
     @Override
     public void updateTask() {
         //Utils.getLogger().info("AIGoto: updateTask");
+        //BlockPos[] logScan;
+        //logScan[1] = getPos();
+        
         if (--this.timeToRecalcPath <= 0) {
             this.timeToRecalcPath = 10;
-            test.getNavigator().tryMoveToXYZ(getPos().getX(), getPos().getY(), getPos().getZ(), goToSpeed);
+            this.test.getNavigator().tryMoveToXYZ(getPos().getX(), getPos().getY(), getPos().getZ(), goToSpeed);
             
-            if (test.isCollided){
-                if(getBlock().isWood(test.world, getPos())){
-                    test.world.setBlockToAir(getPos());
+            if (this.test.isCollided){
+                if(getBlock().isWood(this.test.world, getPos())){
+                    this.test.world.setBlockToAir(getPos());
+                    this.test.stomach = this.test.stomach - 1;
                     
-                    for(int d=1; getBlock(getPos().down(d)).isWood(test.world, getPos().down(d)); d++){
-                        test.world.setBlockToAir(getPos().down(d));
+                    for(int d=1; getBlock(getPos().down(d)).isWood(this.test.world, getPos().down(d)); d++){
+                        this.test.world.setBlockToAir(getPos().down(d));
+                        this.test.stomach = this.test.stomach - 1;
                     }
     
-                    for(int u=1; getBlock(getPos().up(u)).isWood(test.world, getPos().up(u))|
-                            getBlock(getPos().up(u)).isLeaves(getIBS(getPos().up(u)),test.world, getPos().up(u)); u++){
-                        test.world.setBlockToAir(getPos().up(u));
+                    for(int u=1; getBlock(getPos().up(u)).isWood(this.test.world, getPos().up(u))||
+                            getBlock(getPos().up(u)).isLeaves(getIBS(getPos().up(u)),this.test.world, getPos().up(u)); u++){
+                        this.test.world.setBlockToAir(getPos().up(u));
+                        this.test.stomach = this.test.stomach - 1;
                         
-                        for(int n=1; getBlock(getPos().up(u).north(n)).isWood(test.world, getPos().up(u).north(n)) |
-                                getBlock(getPos().up(u).north(n)).isLeaves(getIBS(getPos().up(u).north(n)),test.world, getPos().up(u).north(n)); n++){
-                            test.world.setBlockToAir(getPos().up(u).north(n));
+                        for(int n=1; getBlock(getPos().up(u).north(n)).isWood(this.test.world, getPos().up(u).north(n)) ||
+                                getBlock(getPos().up(u).north(n)).isLeaves(getIBS(getPos().up(u).north(n)),this.test.world, getPos().up(u).north(n)); n++){
+                            this.test.world.setBlockToAir(getPos().up(u).north(n));
+                            this.test.stomach = this.test.stomach - 1;
     
-                            for(int w=1; getBlock(getPos().north(n).east(w)).isWood(test.world, getPos().north(n).east(w)) |
-                                getBlock(getPos().up(u).north(n).west(w)).isLeaves(getIBS(getPos().up(u).north(n).west(w)),test.world, getPos().up(u).north(n).west(w)); w++){
-                                test.world.setBlockToAir(getPos().up(u).north(n).west(w));
+                            for(int w=1; getBlock(getPos().up(u).north(n).east(w)).isWood(this.test.world, getPos().up(u).north(n).east(w)) ||
+                                getBlock(getPos().up(u).north(n).west(w)).isLeaves(getIBS(getPos().up(u).north(n).west(w)),this.test.world, getPos().up(u).north(n).west(w)); w++){
+                                this.test.world.setBlockToAir(getPos().up(u).north(n).west(w));
+                                this.test.stomach = this.test.stomach - 1;
                             }
     
-                            for(int e=1; getBlock(getPos().north(n).east(e)).isWood(test.world, getPos().north(n).east(e)) |
-                                getBlock(getPos().up(u).north(n).east(e)).isLeaves(getIBS(getPos().up(u).north(n).east(e)),test.world, getPos().up(u).north(n).east(e)); e++){
-                                test.world.setBlockToAir(getPos().up(u).north(n).east(e));
+                            for(int e=1; getBlock(getPos().up(u).north(n).east(e)).isWood(this.test.world, getPos().up(u).north(n).east(e)) ||
+                                getBlock(getPos().up(u).north(n).east(e)).isLeaves(getIBS(getPos().up(u).north(n).east(e)),this.test.world, getPos().up(u).north(n).east(e)); e++){
+                                this.test.world.setBlockToAir(getPos().up(u).north(n).east(e));
+                                this.test.stomach = this.test.stomach - 1;
                             }
                         }
                         
-                        for(int s=1; getBlock(getPos().up(u).south(s)).isWood(test.world, getPos().up(u).south(s)) |
-                                getBlock(getPos().up(u).south(s)).isLeaves(getIBS(getPos().up(u).south(s)),test.world, getPos().up(u).south(s)); s++){
-                            test.world.setBlockToAir(getPos().up(u).south(s));
+                        for(int s=1; getBlock(getPos().up(u).south(s)).isWood(this.test.world, getPos().up(u).south(s)) ||
+                                getBlock(getPos().up(u).south(s)).isLeaves(getIBS(getPos().up(u).south(s)),this.test.world, getPos().up(u).south(s)); s++){
+                            this.test.world.setBlockToAir(getPos().up(u).south(s));
+                            this.test.stomach = this.test.stomach - 1;
     
-                            for(int w=1; getBlock(getPos().south(s).east(w)).isWood(test.world, getPos().south(s).east(w)) |
-                                    getBlock(getPos().up(u).south(s).west(w)).isLeaves(getIBS(getPos().up(u).south(s).west(w)),test.world, getPos().up(u).south(s).west(w)); w++){
-                                test.world.setBlockToAir(getPos().up(u).south(s).west(w));
+                            for(int w=1; getBlock(getPos().up(u).south(s).west(w)).isWood(this.test.world, getPos().up(u).south(s).west(w)) ||
+                                    getBlock(getPos().up(u).south(s).west(w)).isLeaves(getIBS(getPos().up(u).south(s).west(w)),this.test.world, getPos().up(u).south(s).west(w)); w++){
+                                this.test.world.setBlockToAir(getPos().up(u).south(s).west(w));
+                                this.test.stomach = this.test.stomach - 1;
                             }
     
-                            for(int e=1; getBlock(getPos().south(s).east(e)).isWood(test.world, getPos().south(s).east(e)) |
-                                    getBlock(getPos().up(u).south(s).east(e)).isLeaves(getIBS(getPos().up(u).south(s).east(e)),test.world, getPos().up(u).south(s).east(e)); e++){
-                                test.world.setBlockToAir(getPos().up(u).south(s).east(e));
+                            for(int e=1; getBlock(getPos().up(u).south(s).east(e)).isWood(this.test.world, getPos().up(u).south(s).east(e)) ||
+                                    getBlock(getPos().up(u).south(s).east(e)).isLeaves(getIBS(getPos().up(u).south(s).east(e)),this.test.world, getPos().up(u).south(s).east(e)); e++){
+                                this.test.world.setBlockToAir(getPos().up(u).south(s).east(e));
+                                this.test.stomach = this.test.stomach - 1;
                             }
                         }
     
-                        for(int w=1; getBlock(getPos().up(u).west(w)).isWood(test.world, getPos().up(u).west(w)) |
-                                getBlock(getPos().up(u).west(w)).isLeaves(getIBS(getPos().up(u).west(w)),test.world, getPos().up(u).west(w)); w++) {
-                            test.world.setBlockToAir(getPos().up(u).west(w));
+                        for(int w=1; getBlock(getPos().up(u).west(w)).isWood(this.test.world, getPos().up(u).west(w)) ||
+                                getBlock(getPos().up(u).west(w)).isLeaves(getIBS(getPos().up(u).west(w)),this.test.world, getPos().up(u).west(w)); w++) {
+                            this.test.world.setBlockToAir(getPos().up(u).west(w));
+                            this.test.stomach = this.test.stomach - 1;
+    
+                            for(int s=1; getBlock(getPos().up(u).west(w).south(s)).isWood(this.test.world, getPos().up(u).west(w).south(s)) ||
+                                    getBlock(getPos().up(u).west(w).south(s)).isLeaves(getIBS(getPos().up(u).west(w).south(s)),this.test.world, getPos().up(u).west(w).south(s)); s++) {
+                                this.test.world.setBlockToAir(getPos().up(u).west(w).south(s));
+                                this.test.stomach = this.test.stomach - 1;
+                            }
+    
+                            for(int n=1; getBlock(getPos().up(u).west(w).north(n)).isWood(this.test.world, getPos().up(u).west(w).north(n)) ||
+                                    getBlock(getPos().up(u).west(w).north(n)).isLeaves(getIBS(getPos().up(u).west(w).north(n)),this.test.world, getPos().up(u).west(w).north(n)); n++) {
+                                this.test.world.setBlockToAir(getPos().up(u).west(w).north(n));
+                                this.test.stomach = this.test.stomach - 1;
+                            }
                         }
     
-                        for(int e=1; getBlock(getPos().up(u).east(e)).isWood(test.world, getPos().up(u).east(e)) |
-                                getBlock(getPos().up(u).east(e)).isLeaves(getIBS(getPos().up(u).east(e)),test.world, getPos().up(u).east(e)); e++) {
-                            test.world.setBlockToAir(getPos().up(u).east(e));
+                        for(int e=1; getBlock(getPos().up(u).east(e)).isWood(this.test.world, getPos().up(u).east(e)) ||
+                                getBlock(getPos().up(u).east(e)).isLeaves(getIBS(getPos().up(u).east(e)),this.test.world, getPos().up(u).east(e)); e++) {
+                            this.test.world.setBlockToAir(getPos().up(u).east(e));
+                            this.test.stomach = this.test.stomach - 1;
+    
+                            for(int s=1; getBlock(getPos().up(u).east(e).south(s)).isWood(this.test.world, getPos().up(u).east(e).south(s)) ||
+                                    getBlock(getPos().up(u).east(e).south(s)).isLeaves(getIBS(getPos().up(u).east(e).south(s)),this.test.world, getPos().up(u).east(e).south(s)); s++) {
+                                this.test.world.setBlockToAir(getPos().up(u).east(e).south(s));
+                                this.test.stomach = this.test.stomach - 1;
+                            }
+    
+                            for(int n=1; getBlock(getPos().up(u).east(e).north(n)).isWood(this.test.world, getPos().up(u).east(e).north(n)) ||
+                                    getBlock(getPos().up(u).east(e).north(n)).isLeaves(getIBS(getPos().up(u).east(e).north(n)),this.test.world, getPos().up(u).east(e).north(n)); n++) {
+                                this.test.world.setBlockToAir(getPos().up(u).east(e).north(n));
+                                this.test.stomach = this.test.stomach - 1;
+                            }
                         }
                     }
                     
@@ -131,6 +169,8 @@ public class AIGoto extends EntityAIBase{
     
     private Block getBlock(BlockPos pos){
         IBlockState ibs = test.world.getBlockState(pos);
+        //BlockLeaves blah = (BlockLeaves)ibs.getBlock();
+        //ibs.getActualState(test.world,pos).getValue()
         return ibs.getBlock();
     }
     

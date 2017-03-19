@@ -1,10 +1,9 @@
 package com.clowcadia.test.entities.living;
 
+import com.clowcadia.test.ModHandler;
 import com.clowcadia.test.entities.living.ai.AIGoto;
 import com.clowcadia.test.init.GuiHandler;
-import com.clowcadia.test.ModHandler;
 import com.clowcadia.test.utils.Utils;
-
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,8 +20,8 @@ import net.minecraftforge.items.ItemStackHandler;
 public class Test extends EntityTameable{
     
     public final ItemStackHandler handler;
-    private int stomach;
-    private int stomachCap = 800;
+    public int stomach;
+    private int stomachCap = 1600;
     
     public Test(World worldIn) {
         super(worldIn);
@@ -98,9 +97,9 @@ public class Test extends EntityTameable{
         ItemStack foodStack = this.handler.getStackInSlot(0);
         if (this.world != null){
             if(!this.world.isRemote){
-                if(foodStack.getItem() == Items.APPLE && stomach != stomachCap){
+                if(foodStack.getItem() == Items.APPLE && stomach < stomachCap && (stomachCap-stomach)>=160){
                     foodStack.splitStack(1);
-                    this.stomach += 40;
+                    this.stomach += 160;
                 }
             }
         }
