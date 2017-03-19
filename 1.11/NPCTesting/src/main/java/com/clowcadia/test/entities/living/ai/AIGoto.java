@@ -61,7 +61,7 @@ public class AIGoto extends EntityAIBase{
                         test.world.setBlockToAir(getPos(0,-i,0));
                     }
     
-                    for(int i=1; getBlock(0,+i,0) == Blocks.LOG | getBlock(0,+i,0) == Blocks.LOG2; i--){
+                    for(int i=1; getBlock(0,+i,0) == Blocks.LOG | getBlock(0,+i,0) == Blocks.LOG2; i++){
                         test.world.setBlockToAir(getPos(0,+i,0));
                     }
                     
