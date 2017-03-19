@@ -6,7 +6,6 @@ import com.clowcadia.test.utils.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTUtil;
@@ -58,12 +57,53 @@ public class AIGoto extends EntityAIBase{
                 if(getBlock().isWood(test.world, getPos())){
                     test.world.setBlockToAir(getPos());
                     
-                    for(int i=1; getBlock().isWood(test.world, getPos().down(i)); i++){
-                        test.world.setBlockToAir(getPos().down(i));
+                    for(int d=1; getBlock(getPos().down(d)).isWood(test.world, getPos().down(d)); d++){
+                        test.world.setBlockToAir(getPos().down(d));
                     }
     
-                    for(int i=1; getBlock().isWood(test.world, getPos().up(i)); i++){
-                        test.world.setBlockToAir(getPos().up(i));
+                    for(int u=1; getBlock(getPos().up(u)).isWood(test.world, getPos().up(u))|
+                            getBlock(getPos().up(u)).isLeaves(getIBS(getPos().up(u)),test.world, getPos().up(u)); u++){
+                        test.world.setBlockToAir(getPos().up(u));
+                        
+                        for(int n=1; getBlock(getPos().up(u).north(n)).isWood(test.world, getPos().up(u).north(n)) |
+                                getBlock(getPos().up(u).north(n)).isLeaves(getIBS(getPos().up(u).north(n)),test.world, getPos().up(u).north(n)); n++){
+                            test.world.setBlockToAir(getPos().up(u).north(n));
+    
+                            for(int w=1; getBlock(getPos().north(n).east(w)).isWood(test.world, getPos().north(n).east(w)) |
+                                getBlock(getPos().up(u).north(n).west(w)).isLeaves(getIBS(getPos().up(u).north(n).west(w)),test.world, getPos().up(u).north(n).west(w)); w++){
+                                test.world.setBlockToAir(getPos().up(u).north(n).west(w));
+                            }
+    
+                            for(int e=1; getBlock(getPos().north(n).east(e)).isWood(test.world, getPos().north(n).east(e)) |
+                                getBlock(getPos().up(u).north(n).east(e)).isLeaves(getIBS(getPos().up(u).north(n).east(e)),test.world, getPos().up(u).north(n).east(e)); e++){
+                                test.world.setBlockToAir(getPos().up(u).north(n).east(e));
+                            }
+                        }
+                        
+                        for(int s=1; getBlock(getPos().up(u).south(s)).isWood(test.world, getPos().up(u).south(s)) |
+                                getBlock(getPos().up(u).south(s)).isLeaves(getIBS(getPos().up(u).south(s)),test.world, getPos().up(u).south(s)); s++){
+                            test.world.setBlockToAir(getPos().up(u).south(s));
+    
+                            for(int w=1; getBlock(getPos().south(s).east(w)).isWood(test.world, getPos().south(s).east(w)) |
+                                    getBlock(getPos().up(u).south(s).west(w)).isLeaves(getIBS(getPos().up(u).south(s).west(w)),test.world, getPos().up(u).south(s).west(w)); w++){
+                                test.world.setBlockToAir(getPos().up(u).south(s).west(w));
+                            }
+    
+                            for(int e=1; getBlock(getPos().south(s).east(e)).isWood(test.world, getPos().south(s).east(e)) |
+                                    getBlock(getPos().up(u).south(s).east(e)).isLeaves(getIBS(getPos().up(u).south(s).east(e)),test.world, getPos().up(u).south(s).east(e)); e++){
+                                test.world.setBlockToAir(getPos().up(u).south(s).east(e));
+                            }
+                        }
+    
+                        for(int w=1; getBlock(getPos().up(u).west(w)).isWood(test.world, getPos().up(u).west(w)) |
+                                getBlock(getPos().up(u).west(w)).isLeaves(getIBS(getPos().up(u).west(w)),test.world, getPos().up(u).west(w)); w++) {
+                            test.world.setBlockToAir(getPos().up(u).west(w));
+                        }
+    
+                        for(int e=1; getBlock(getPos().up(u).east(e)).isWood(test.world, getPos().up(u).east(e)) |
+                                getBlock(getPos().up(u).east(e)).isLeaves(getIBS(getPos().up(u).east(e)),test.world, getPos().up(u).east(e)); e++) {
+                            test.world.setBlockToAir(getPos().up(u).east(e));
+                        }
                     }
                     
                 }
@@ -92,5 +132,9 @@ public class AIGoto extends EntityAIBase{
     private Block getBlock(BlockPos pos){
         IBlockState ibs = test.world.getBlockState(pos);
         return ibs.getBlock();
+    }
+    
+    private IBlockState getIBS(BlockPos pos){
+        return  test.world.getBlockState(pos);
     }
 }
