@@ -9,6 +9,7 @@ import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTUtil;
 import net.minecraft.util.math.BlockPos;
 
 public class AIGoto extends EntityAIBase{
@@ -57,12 +58,12 @@ public class AIGoto extends EntityAIBase{
                 if(getBlock() == Blocks.LOG | getBlock() == Blocks.LOG2){
                     test.world.setBlockToAir(getPos());
                     
-                    for(int i=1; getBlock(0,-i,0) == Blocks.LOG | getBlock(0,-i,0) == Blocks.LOG2; i--){
-                        test.world.setBlockToAir(getPos(0,-i,0));
+                    for(int i=1; getBlock(getPos().down(i)) == Blocks.LOG | getBlock(getPos().down(i)) == Blocks.LOG2; i--){
+                        test.world.setBlockToAir(getPos().down(i));
                     }
     
-                    for(int i=1; getBlock(0,+i,0) == Blocks.LOG | getBlock(0,+i,0) == Blocks.LOG2; i++){
-                        test.world.setBlockToAir(getPos(0,+i,0));
+                    for(int i=1; getBlock(getPos().up(i)) == Blocks.LOG | getBlock(getPos().up(i)) == Blocks.LOG2; i++){
+                        test.world.setBlockToAir(getPos().up(i));
                     }
                     
                 }
@@ -80,20 +81,16 @@ public class AIGoto extends EntityAIBase{
     private BlockPos getPos(){
         ItemStack stack = this.test.handler.getStackInSlot(0);
         NBTTagCompound nbt = stack.getTagCompound();
-        return new BlockPos(nbt.getInteger("targetX"),nbt.getInteger("targetY"),nbt.getInteger("targetZ"));
+        return NBTUtil.getPosFromTag(nbt);
     }
-    private BlockPos getPos(int x, int y, int z){
-        ItemStack stack = this.test.handler.getStackInSlot(0);
-        NBTTagCompound nbt = stack.getTagCompound();
-        return  new BlockPos(nbt.getInteger("targetX")+x,nbt.getInteger("targetY")+y,nbt.getInteger("targetZ")+z);
-    }
+    
     private Block getBlock(){
         IBlockState ibs = test.world.getBlockState(getPos());
         return ibs.getBlock();
     }
     
-    private Block getBlock(int x, int y, int z){
-        IBlockState ibs = test.world.getBlockState(getPos(x,y,z));
+    private Block getBlock(BlockPos pos){
+        IBlockState ibs = test.world.getBlockState(pos);
         return ibs.getBlock();
     }
 }
