@@ -55,14 +55,14 @@ public class AIGoto extends EntityAIBase{
             test.getNavigator().tryMoveToXYZ(getPos().getX(), getPos().getY(), getPos().getZ(), goToSpeed);
             
             if (test.isCollided){
-                if(getBlock() == Blocks.LOG | getBlock() == Blocks.LOG2){
+                if(getBlock().isWood(test.world, getPos())){
                     test.world.setBlockToAir(getPos());
                     
-                    for(int i=1; getBlock(getPos().down(i)) == Blocks.LOG | getBlock(getPos().down(i)) == Blocks.LOG2; i--){
+                    for(int i=1; getBlock().isWood(test.world, getPos().down(i)); i++){
                         test.world.setBlockToAir(getPos().down(i));
                     }
     
-                    for(int i=1; getBlock(getPos().up(i)) == Blocks.LOG | getBlock(getPos().up(i)) == Blocks.LOG2; i++){
+                    for(int i=1; getBlock().isWood(test.world, getPos().up(i)); i++){
                         test.world.setBlockToAir(getPos().up(i));
                     }
                     
