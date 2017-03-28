@@ -74,7 +74,7 @@ public class AIGoto extends EntityAIBase{
                 for (BlockPos pos: terrain)
                     if(getBlock(pos.up()) == Blocks.LOG || getBlock(pos.up()) == Blocks.LOG2) treeRoots.add(pos.up());
                 TreeArea trArea;
-                if(treeRoots.get(0)!=null){
+                if(treeRoots!=null){
                     trArea = new TreeArea(treeRoots);
                     new LumberJack(world, getRootPos(),
                             trArea.zNBorder, trArea.xNBorder, trArea.zPBorder, trArea.xPBorder);
