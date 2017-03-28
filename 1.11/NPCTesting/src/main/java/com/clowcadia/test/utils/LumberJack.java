@@ -19,10 +19,7 @@ public class LumberJack {
         Block block;
         IBlockState ibs;
         List<BlockPos> list = new ArrayList<BlockPos>();
-        int sL = 7;
-        int eL = 7;
-        int nL = 7;
-        int wL = 7;
+        int sL = 7, eL = 7, nL = 7, wL = 7;
         if(sLimit != 0) sL = sLimit;
         Utils.getLogger().info("SL"+ sL);
         if(eLimit != 0) eL = eLimit;

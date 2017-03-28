@@ -73,10 +73,13 @@ public class AIGoto extends EntityAIBase{
                 List<BlockPos> treeRoots = new ArrayList<BlockPos>();
                 for (BlockPos pos: terrain)
                     if(getBlock(pos.up()) == Blocks.LOG || getBlock(pos.up()) == Blocks.LOG2) treeRoots.add(pos.up());
+                TreeArea trArea;
+                if(treeRoots.get(0)!=null){
+                    trArea = new TreeArea(treeRoots);
+                    new LumberJack(world, getRootPos(),
+                            trArea.zNBorder, trArea.xNBorder, trArea.zPBorder, trArea.xPBorder);
+                }
                 
-                TreeArea trArea = new TreeArea(treeRoots);
-                new LumberJack(world, getRootPos(),
-                        trArea.zPBorder, trArea.xPBorder, trArea.zNBorder, trArea.xNBorder);
             }
         }
     }
@@ -93,7 +96,7 @@ public class AIGoto extends EntityAIBase{
     }
     
     private BlockPos getRootPos(){
-        BlockPos pos = new BlockPos(getPos());
+        BlockPos pos = getPos();
         for(int d = 0; getBlock(getPos().down(d)).isWood(world, getPos().down(d)); d++){
             pos = getPos().down(d);
         }

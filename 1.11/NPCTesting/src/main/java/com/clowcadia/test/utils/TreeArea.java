@@ -6,25 +6,16 @@ import java.util.List;
 
 public class TreeArea {
     
-    public int xPBorder = 0;
-    public int xNBorder = 0;
-    public int zPBorder = 0;
-    public int zNBorder = 0;
+    public int xPBorder = 0, xNBorder = 0, zPBorder = 0, zNBorder = 0;
     
     public TreeArea(List<BlockPos> list){
-        int xDPC = 0;
-        int xDNC = 0;
-        int zDPC = 0;
-        int zDNC = 0;
+        int xDPC = 0, xDNC = 0, zDPC = 0, zDNC = 0;
         
-        BlockPos mainTree = list.get(1);
+        BlockPos mainTree = list.get(0);
         
         for(BlockPos pos: list){
             if(pos != mainTree){
-                int xDP;
-                int xDN;
-                int zDP;
-                int zDN;
+                int xDP, xDN, zDP, zDN;
             
                 if((mainTree.getX() - pos.getX())>0){
                     xDP = mainTree.getX() - pos.getX();
