@@ -2,10 +2,13 @@ package com.clowcadia.test.entities.living.ai;
 
 import com.clowcadia.test.entities.living.Test;
 import com.clowcadia.test.init.ItemHandler;
+import com.clowcadia.test.utils.TerrainScan;
+import com.clowcadia.test.utils.TreeArea;
 import com.clowcadia.test.utils.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTUtil;
@@ -61,114 +64,21 @@ public class AIGoto extends EntityAIBase{
             this.test.getNavigator().tryMoveToXYZ(getPos().getX(), getPos().getY(), getPos().getZ(), goToSpeed);
             
             if (this.test.isCollided){
-                Ter ter = new Ter(world);
-                List<BlockPos> terList = new ArrayList<BlockPos>();
-                List<BlockPos> treeList = new ArrayList<BlockPos>();
-                List<BlockPos> posList = new ArrayList<BlockPos>();
-                BlockPos cPos;
+                TerrainScan ter = new TerrainScan(world);
+                List<BlockPos> terrain = new ArrayList<BlockPos>();
+                List<BlockPos> treeRoots = new ArrayList<BlockPos>();
+                BlockPos cPos = getRootPos().down(1);
+                ter.record(cPos,terrain);
+                ter.processTerrain(cPos,terrain);
                 
-                cPos = getRootPos().down(1);
-                ter.record(cPos,terList);
-                for (int n = 1; n < 7; n++){
-                    cPos = cPos.north(n);
-                    ter.record(cPos,terList);
-                    
-                    for (int w = 0; w < 7; w++){
-                        cPos = cPos.west(w);
-                        ter.record(cPos,terList);
-                    }
-                    
-                    cPos = getRootPos().down(1).north(n);
-                    for (int e = 1; e < 7; e++){
-                        cPos = cPos.east(e);
-                        ter.record(cPos,terList);
+                for (BlockPos pos: terrain) {
+                    if(getBlock(pos.up()) == Blocks.LOG || getBlock(pos.up()) == Blocks.LOG2){
+                        treeRoots.add(pos.up());
                     }
                 }
                 
-                for (int s = 1; s < 7; s++){
-                    cPos = cPos.south(s);
-                    ter.record(cPos,terList);
-                    
-                    for (int w = 0; w < 7; w++){
-                        cPos = cPos.west(w);
-                        ter.record(cPos,terList);
-                    }
-    
-                    cPos = getRootPos().down(1).south(s);
-                    for (int e = 1; e < 7; e++){
-                        cPos = cPos.east(e);
-                        ter.record(cPos,terList);
-                    }
-                }
-                for (BlockPos pos: terList) {
-                    Utils.getLogger().info(" BLOCK " + getBlock(pos) + " POS " + pos);
-                }
-                Utils.getLogger().info(" REPEATING ");
-                
-                /*for(int t = 0; cBlock.isWood(world, cPos); t++){
-                    cPos = getRootPos().up(t);
-                    cBlock = getBlock(cPos);
-                    posList.add(cPos);
-                    world.setBlockToAir(cPos);
-                }*/
-                    
-                /*for(int u = 0; isTree(getRootPos().up(u)); u++){
-                    cPos = getRootPos().up(u);
-                    if(isRecordable(u, cPos, posList)) {
-                        posList.add(cPos);
-                    }
-                    
-                    for(int n = 0; isTree(getRootPos().up(u).north(n)); n++){
-                        cPos = getRootPos().up(u).north(n);
-                        if(isRecordable(u, cPos, posList)) {
-                            posList.add(cPos);
-                        }
-                        
-                        for(int e = 0; isTree(getRootPos().up(u).north(n).east(e)); e++){
-                            cPos = getRootPos().up(u).north(n).east(e);
-                            if(isRecordable(u, cPos, posList)) {
-                                posList.add(cPos);
-                            }
-                        }
-
-                        for(int w = 0; isTree(getRootPos().up(u).north(n).west(w)); w++){
-                            cPos = getRootPos().up(u).north(n).west(w);
-                            if(isRecordable(u, cPos, posList)) {
-                                posList.add(cPos);
-                            }
-                        }
-                    }
-
-                    for(int s = 0; isTree(getRootPos().up(u).south(s)); s++){
-                        cPos = getRootPos().up(u).south(s);
-                        if(isRecordable(u, cPos, posList)) {
-                            posList.add(cPos);
-                        }
-    
-                        for(int e = 0; isTree(getRootPos().up(u).south(s).east(e)); e++){
-                            cPos = getRootPos().up(u).south(s).east(e);
-                            if(isRecordable(u, cPos, posList)) {
-                                posList.add(cPos);
-                            }
-                        }
-    
-                        for(int w = 0; isTree(getRootPos().up(u).south(s).west(w)); w++){
-                            cPos = getRootPos().up(u).south(s).west(w);
-                            if(isRecordable(u, cPos, posList)) {
-                                posList.add(cPos);
-                            }
-                        }
-                    }
-                }*/
-                /*for (BlockPos pos: posList) {
-                    if(getBlock(pos).isWood(world,pos)) world.setBlockToAir(pos);
-                }
-                for (BlockPos pos: posList) {
-                    if(getBlock(pos).isLeaves(getIBS(pos),world,pos)){
-                        world.setBlockToAir(pos);
-                        //Utils.getLogger().info(" SET POSITION " + pos + " " + getBlock(pos)+" "+getIBS(pos).getValue(BlockLeaves.CHECK_DECAY));
-                    }
-                }*/
+                TreeArea trArea = new TreeArea(treeRoots);
+                Utils.getLogger().info(trArea.xPBorder + " " + trArea.xNBorder + " " + trArea.zPBorder + " " + trArea.zNBorder);
             }
         }
     }
@@ -200,42 +110,5 @@ public class AIGoto extends EntityAIBase{
         return  world.getBlockState(pos);
     }
     
-    
-    
-    private boolean isTree(BlockPos pos){
-        return getBlock(pos).isWood(world,pos) | getBlock(pos).isLeaves(getIBS(pos),world,pos);
-    }
-    
-    
-    
-    private boolean isRecordable(int up, BlockPos pos, List<BlockPos> list){
-        boolean isRecordable = false;
-        if((up > 1 && !getBlock(pos.down(1)).isWood(world, pos)) | blockListCheck(0, list, pos)) {
-            isRecordable = true;
-        }
-        return isRecordable;
-    }
-    
-    private boolean blockListCheck(int offset, List<BlockPos> list, BlockPos pos){
-        boolean posAdd = false;
-            if(!list.contains(pos.down(offset))) {
-                posAdd = true;
-            }
-            if(!posAdd & !list.contains(pos.up(offset))) {
-                posAdd = true;
-            }
-            if(!posAdd & !list.contains(pos.north(offset))) {
-                posAdd = true;
-            }
-            if(!posAdd & !list.contains(pos.south(offset))) {
-                posAdd = true;
-            }
-            if(!posAdd & !list.contains(pos.east(offset))) {
-                posAdd = true;
-            }
-            if(!posAdd & !list.contains(pos.west(offset))) {
-                posAdd = true;
-            }
-        return posAdd;
-    }
+     
 }
