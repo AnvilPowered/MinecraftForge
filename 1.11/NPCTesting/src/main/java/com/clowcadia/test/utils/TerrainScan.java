@@ -11,12 +11,12 @@ import java.util.List;
 public class TerrainScan {
     private World world;
     
-    public TerrainScan(World world){
+    public TerrainScan(World world, BlockPos pos, List<BlockPos> list){
         this.world = world;
-    }
     
-    public List<BlockPos> processTerrain(BlockPos pos, List<BlockPos> list){
         BlockPos posChanged = pos;
+        record(pos,list);
+        
         for (int n = 1; n < 7; n++){
             posChanged = posChanged.north(n);
             record(posChanged,list);
@@ -48,7 +48,6 @@ public class TerrainScan {
                 record(posChanged,list);
             }
         }
-        return list;
     }
     
     private BlockPos getFloor(BlockPos pos){
@@ -70,7 +69,7 @@ public class TerrainScan {
         return floor;
     }
     
-    public List<BlockPos> record(BlockPos pos, List<BlockPos> list){
+    private List<BlockPos> record(BlockPos pos, List<BlockPos> list){
         if(isRecordable(getFloor(pos),list))list.add(getFloor(pos));
         return list;
     }

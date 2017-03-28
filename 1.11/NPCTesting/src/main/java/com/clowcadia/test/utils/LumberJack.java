@@ -33,32 +33,32 @@ public class LumberJack {
         Utils.getLogger().info("WL"+ wL);
         
         for(int u = 15; u >= 0; u--){
-            for(int s = sL; s >= 0; s--){
-                for(int e = eL; e >= 0; e--){
+            for(int s = sL; s >= 0; s--) {
+                for (int e = eL; e >= 0; e--) {
                     pos = root.up(u).south(s).east(e);
                     block = getBlock(pos);
                     ibs = getIBS(pos);
-                    if(isRecordable(list,pos,block,ibs)) list.add(pos);
+                    if (isRecordable(list, pos, block, ibs)) list.add(pos);
                 }
-                for(int w = wL; w >= 0; w--){
+                for (int w = wL; w >= 0; w--) {
                     pos = root.up(u).south(s).east(w);
                     block = getBlock(pos);
                     ibs = getIBS(pos);
-                    if(isRecordable(list,pos,block,ibs)) list.add(pos);
+                    if (isRecordable(list, pos, block, ibs)) list.add(pos);
                 }
-                for(int n = nL; n >= 0; n--) {
-                    for (int e = eL; e >= 0; e--) {
-                        pos = root.up(u).north(n).east(e);
-                        block = getBlock(pos);
-                        ibs = getIBS(pos);
-                        if (isRecordable(list, pos, block, ibs)) list.add(pos);
-                    }
-                    for (int w = wL; w >= 0; w--) {
-                        pos = root.up(u).north(n).east(w);
-                        block = getBlock(pos);
-                        ibs = getIBS(pos);
-                        if (isRecordable(list, pos, block, ibs)) list.add(pos);
-                    }
+            }
+            for(int n = nL; n >= 0; n--) {
+                for (int e = eL; e >= 0; e--) {
+                    pos = root.up(u).north(n).east(e);
+                    block = getBlock(pos);
+                    ibs = getIBS(pos);
+                    if (isRecordable(list, pos, block, ibs)) list.add(pos);
+                }
+                for (int w = wL; w >= 0; w--) {
+                    pos = root.up(u).north(n).east(w);
+                    block = getBlock(pos);
+                    ibs = getIBS(pos);
+                    if (isRecordable(list, pos, block, ibs)) list.add(pos);
                 }
             }
         }
