@@ -2,6 +2,7 @@ package com.clowcadia.test.entities.living.ai;
 
 import com.clowcadia.test.entities.living.Test;
 import com.clowcadia.test.init.ItemHandler;
+import com.clowcadia.test.utils.LumberJack;
 import com.clowcadia.test.utils.TerrainScan;
 import com.clowcadia.test.utils.TreeArea;
 import com.clowcadia.test.utils.Utils;
@@ -64,13 +65,14 @@ public class AIGoto extends EntityAIBase{
             this.test.getNavigator().tryMoveToXYZ(getPos().getX(), getPos().getY(), getPos().getZ(), goToSpeed);
             
             if (this.test.isCollided){
-                TerrainScan ter = new TerrainScan(world);
-                List<BlockPos> terrain = new ArrayList<BlockPos>();
-                List<BlockPos> treeRoots = new ArrayList<BlockPos>();
                 BlockPos cPos = getRootPos().down(1);
+                
+                List<BlockPos> terrain = new ArrayList<BlockPos>();
+                TerrainScan ter = new TerrainScan(world);
                 ter.record(cPos,terrain);
                 ter.processTerrain(cPos,terrain);
                 
+                List<BlockPos> treeRoots = new ArrayList<BlockPos>();
                 for (BlockPos pos: terrain) {
                     if(getBlock(pos.up()) == Blocks.LOG || getBlock(pos.up()) == Blocks.LOG2){
                         treeRoots.add(pos.up());
@@ -78,7 +80,8 @@ public class AIGoto extends EntityAIBase{
                 }
                 
                 TreeArea trArea = new TreeArea(treeRoots);
-                Utils.getLogger().info(trArea.xPBorder + " " + trArea.xNBorder + " " + trArea.zPBorder + " " + trArea.zNBorder);
+                LumberJack lumberJack = new LumberJack(world, getRootPos(),
+                        trArea.zNBorder, trArea.xNBorder, trArea.zPBorder, trArea.xPBorder);
             }
         }
     }

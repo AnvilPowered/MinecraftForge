@@ -12,10 +12,6 @@ public class TreeArea {
     public int zNBorder = 0;
     
     public TreeArea(List<BlockPos> list){
-        //this.xPBorder = xPBorder;
-        //this.xNBorder = xNBorder;
-        //this.zPBorder = zPBorder;
-        //this.zNBorder = zNBorder;
         int xDPC = 0;
         int xDNC = 0;
         int zDPC = 0;
