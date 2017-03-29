@@ -17,7 +17,7 @@ public class TerrainScan {
         BlockPos posChanged = pos;
         record(pos,list);
         
-        for (int n = 1; n < 7; n++){
+        for (int n = 0; n < 7; n++){
             posChanged = posChanged.north(n);
             record(posChanged,list);
         
@@ -27,13 +27,13 @@ public class TerrainScan {
             }
         
             posChanged = pos.north(n);
-            for (int e = 1; e < 7; e++){
+            for (int e = 0; e < 7; e++){
                 posChanged = posChanged.east(e);
                 record(posChanged,list);
             }
         }
     
-        for (int s = 1; s < 7; s++){
+        for (int s = 0; s < 7; s++){
             posChanged = posChanged.south(s);
             record(posChanged,list);
         
@@ -43,7 +43,7 @@ public class TerrainScan {
             }
         
             posChanged = pos.south(s);
-            for (int e = 1; e < 7; e++){
+            for (int e = 0; e < 7; e++){
                 posChanged = posChanged.east(e);
                 record(posChanged,list);
             }

@@ -2,9 +2,7 @@ package com.clowcadia.test.entities.living.ai;
 
 import com.clowcadia.test.entities.living.Test;
 import com.clowcadia.test.init.ItemHandler;
-import com.clowcadia.test.utils.LumberJack;
 import com.clowcadia.test.utils.TerrainScan;
-import com.clowcadia.test.utils.TreeArea;
 import com.clowcadia.test.utils.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -71,15 +69,22 @@ public class AIGoto extends EntityAIBase{
                 new TerrainScan(world, cPos, terrain);
                 
                 List<BlockPos> treeRoots = new ArrayList<BlockPos>();
-                for (BlockPos pos: terrain)
-                    if(getBlock(pos.up()) == Blocks.LOG || getBlock(pos.up()) == Blocks.LOG2) treeRoots.add(pos.up());
-                TreeArea trArea;
-                if(treeRoots!=null){
-                    trArea = new TreeArea(treeRoots);
-                    new LumberJack(world, getRootPos(),
-                            trArea.zNBorder, trArea.xNBorder, trArea.zPBorder, trArea.xPBorder);
+                for (BlockPos terPos: terrain) {
+                    if (getBlock(terPos.up()) == Blocks.LOG || getBlock(terPos.up()) == Blocks.LOG2) {
+                        treeRoots.add(terPos.up());
+                    }
+                    IBlockState glass = Blocks.GLASS.getDefaultState();
+                    world.setBlockState(terPos.up(20),glass,0);
                 }
                 
+                /*if(!treeRoots.isEmpty()){
+                    TreeArea trArea = new TreeArea(treeRoots);
+                    new LumberJack(world, getRootPos(),
+                            trArea.zPBorder, trArea.xPBorder, trArea.zNBorder, trArea.xNBorder,
+                            trArea.zPZ, trArea.xPZ, trArea.zNZ, trArea.xNZ);
+                }
+                terrain.clear();
+                treeRoots.clear();*/
             }
         }
     }

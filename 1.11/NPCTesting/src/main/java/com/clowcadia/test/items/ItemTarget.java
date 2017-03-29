@@ -27,13 +27,10 @@ public class ItemTarget extends Item {
         
         if (!worldIn.isRemote){
             ItemStack stack = player.getHeldItem(hand);
-            
             if(pos!=null){
                 NBTTagCompound nbt = NBTUtil.createPosTag(pos);
                 stack.setTagCompound(nbt);
-                Utils.getLogger().info("ItemTarget: onItemUse: "+nbt.getInteger("targetX"));
-                
-                
+                Utils.getLogger().info("ItemTarget: onItemUse: "+NBTUtil.getPosFromTag(nbt));
             }
         }
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
